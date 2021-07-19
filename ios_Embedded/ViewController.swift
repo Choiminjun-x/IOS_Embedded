@@ -14,6 +14,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         //최민준과 허예원이의 github 전쟁
         //코나아이 인턴 화이팅~~
+        //나 하기 싫어
     }
 
 
