@@ -25,19 +25,36 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hi~" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GB9-H7-mS2">
+                    <rect key="frame" x="100" y="566" width="214" height="196"/>
+                    <color key="backgroundColor" systemColor="systemTealColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" systemColor="secondarySystemBackgroundColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="GB9-H7-mS2" firstAttribute="top" secondItem="WDt-zD-IoS" secondAttribute="bottom" constant="100" id="0fb-uA-acS"/>
                 <constraint firstItem="WDt-zD-IoS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="6Ti-jT-AGV"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GB9-H7-mS2" secondAttribute="trailing" constant="100" id="Fh5-Di-hOE"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="GB9-H7-mS2" secondAttribute="bottom" constant="100" id="ec3-hf-fom"/>
+                <constraint firstItem="GB9-H7-mS2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="100" id="jes-uU-azj"/>
                 <constraint firstItem="WDt-zD-IoS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="nbj-b6-dMh"/>
             </constraints>
             <point key="canvasLocation" x="132" y="89"/>
         </view>
     </objects>
     <resources>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
