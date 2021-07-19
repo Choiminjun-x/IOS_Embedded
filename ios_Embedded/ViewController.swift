@@ -12,7 +12,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        //최민준과 허예원이의 github 전쟁 
+        //최민준과 허예원이의 github 전쟁
+        //코나아이 인턴 화이팅~~
     }
 
 
