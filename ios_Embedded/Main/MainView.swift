@@ -36,7 +36,6 @@ class MainView: UIView {
             self.addSubview($0)
             $0.placeholder = "id"
             $0.textAlignment = .center
-            //$0.borderStyle = .line
             $0.layer.borderWidth = 3
             $0.layer.cornerRadius = 10
             $0.snp.makeConstraints {
