@@ -36,8 +36,9 @@ class MainView: UIView {
             self.addSubview($0)
             $0.placeholder = "id"
             $0.textAlignment = .center
-            $0.layer.borderWidth = 4
+            $0.layer.borderWidth = 3
             $0.layer.cornerRadius = 10
+            $0.layer.borderColor = .init(red: 255/255, green: 153/255, blue: 255/255, alpha: 1)
             $0.snp.makeConstraints {
                 $0.centerY.centerX.equalToSuperview()
                 $0.width.equalToSuperview().offset(-100)
@@ -50,8 +51,9 @@ class MainView: UIView {
             self.addSubview($0)
             $0.placeholder = "password"
             $0.textAlignment = .center
-            $0.layer.borderWidth = 4
+            $0.layer.borderWidth = 3
             $0.layer.cornerRadius = 10
+            $0.layer.borderColor = .init(red: 255/255, green: 153/255, blue: 255/255, alpha: 1)
             $0.snp.makeConstraints {
                 $0.centerX.equalToSuperview()
                 $0.width.equalToSuperview().offset(-100)
