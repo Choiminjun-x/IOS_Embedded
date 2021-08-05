@@ -123,9 +123,10 @@ class MainView: UIView {
             emailLabel.text = "이메일 형식을 확인해 주세요"
             emailLabel.textColor = UIColor.red
             emailLabel.tag = 100
-            
-                
+
+
             self.addSubview(emailLabel)
+            
         } // 이메일 형식 오류
             
         if userModel.isValidPassword(pwd: password){
@@ -151,6 +152,7 @@ class MainView: UIView {
                     removable.removeFromSuperview()
                 }
                 //self.performSegue(withIdentifier: "showMain", sender: self)
+                
             }
             else {
                 print("로그인 실패")
