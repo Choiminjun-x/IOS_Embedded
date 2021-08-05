@@ -36,7 +36,7 @@ class MainView: UIView {
             self.addSubview($0)
             $0.placeholder = "id"
             $0.textAlignment = .center
-            $0.layer.borderWidth = 3
+            $0.layer.borderWidth = 4
             $0.layer.cornerRadius = 10
             $0.snp.makeConstraints {
                 $0.centerY.centerX.equalToSuperview()
@@ -50,7 +50,7 @@ class MainView: UIView {
             self.addSubview($0)
             $0.placeholder = "password"
             $0.textAlignment = .center
-            $0.layer.borderWidth = 3
+            $0.layer.borderWidth = 4
             $0.layer.cornerRadius = 10
             $0.snp.makeConstraints {
                 $0.centerX.equalToSuperview()
