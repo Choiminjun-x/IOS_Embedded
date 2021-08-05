@@ -36,10 +36,12 @@ class MainView: UIView {
             self.addSubview($0)
             $0.placeholder = "id"
             $0.textAlignment = .center
-            $0.borderStyle = .line
+            //$0.borderStyle = .line
+            $0.layer.borderWidth = 3
+            $0.layer.cornerRadius = 10
             $0.snp.makeConstraints {
                 $0.centerY.centerX.equalToSuperview()
-                $0.width.equalToSuperview()
+                $0.width.equalToSuperview().offset(-100)
                 $0.height.equalTo(50)
             }
             $0.addTarget(self, action: #selector(didEndOnExit), for: UIControl.Event.editingDidEndOnExit)
@@ -49,11 +51,13 @@ class MainView: UIView {
             self.addSubview($0)
             $0.placeholder = "password"
             $0.textAlignment = .center
-            $0.borderStyle = .line
+            $0.layer.borderWidth = 3
+            $0.layer.cornerRadius = 10
             $0.snp.makeConstraints {
-                $0.width.equalToSuperview()
+                $0.centerX.equalToSuperview()
+                $0.width.equalToSuperview().offset(-100)
                 $0.height.equalTo(50)
-                $0.top.equalTo(idLabel.snp.bottom)
+                $0.top.equalTo(idLabel.snp.bottom).offset(15)
             }
             $0.addTarget(self, action: #selector(didEndOnExit), for: UIControl.Event.editingDidEndOnExit)
         }
@@ -63,9 +67,10 @@ class MainView: UIView {
             $0.setTitle("login", for: .normal)
             $0.setTitleColor(.white, for: .normal)
             $0.backgroundColor = .darkGray
+            $0.layer.cornerRadius = 15
             $0.snp.makeConstraints{
-                $0.top.equalTo(passwdLabel.snp.bottom)
-                $0.height.equalTo(70)
+                $0.top.equalTo(passwdLabel.snp.bottom).offset(15)
+                $0.height.equalTo(40)
                 $0.width.equalTo(70)
                 $0.centerX.equalToSuperview()
             }
