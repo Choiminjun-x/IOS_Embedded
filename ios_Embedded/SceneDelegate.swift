@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let nav = UINavigationController.init(rootViewController: MainViewController())
+        let nav = UINavigationController.init(rootViewController: LoginViewController())
         
         window?.rootViewController = nav
         

@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		25075A0A9380971273E7BC1C /* Pods_ios_Embedded.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90F125B27D23AD08911A30F /* Pods_ios_Embedded.framework */; };
+		B01613A426BE2FE500EAED73 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01613A326BE2FE500EAED73 /* LoadingView.swift */; };
+		B01613A626BE2FF700EAED73 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01613A526BE2FF700EAED73 /* LoadingViewController.swift */; };
+		B01613A826BE30AA00EAED73 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01613A726BE30AA00EAED73 /* MainView.swift */; };
+		B01613AA26BE30BD00EAED73 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01613A926BE30BD00EAED73 /* MainViewController.swift */; };
 		B01C5A9926B63DC60004C040 /* Sets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C5A9826B63DC60004C040 /* Sets.swift */; };
-		B01C5A9C26B63E270004C040 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C5A9B26B63E270004C040 /* MainView.swift */; };
+		B01C5A9C26B63E270004C040 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C5A9B26B63E270004C040 /* LoginView.swift */; };
 		B084906126BC2212009BA5A6 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B084906026BC2212009BA5A6 /* MainModel.swift */; };
 		B0A8D13C26A45DA800471634 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A8D13B26A45DA800471634 /* AppDelegate.swift */; };
 		B0A8D13E26A45DA800471634 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A8D13D26A45DA800471634 /* SceneDelegate.swift */; };
-		B0A8D14026A45DA800471634 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A8D13F26A45DA800471634 /* MainViewController.swift */; };
+		B0A8D14026A45DA800471634 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A8D13F26A45DA800471634 /* LoginViewController.swift */; };
 		B0A8D14526A45DA800471634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0A8D14426A45DA800471634 /* Assets.xcassets */; };
 		B0A8D14826A45DA800471634 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0A8D14626A45DA800471634 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -21,13 +25,17 @@
 /* Begin PBXFileReference section */
 		0C10E510EED713E9780959EB /* Pods-ios_Embedded.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios_Embedded.release.xcconfig"; path = "Target Support Files/Pods-ios_Embedded/Pods-ios_Embedded.release.xcconfig"; sourceTree = "<group>"; };
 		1CA76C2FC6C5AA2E75A12FC8 /* Pods-ios_Embedded.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios_Embedded.debug.xcconfig"; path = "Target Support Files/Pods-ios_Embedded/Pods-ios_Embedded.debug.xcconfig"; sourceTree = "<group>"; };
+		B01613A326BE2FE500EAED73 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		B01613A526BE2FF700EAED73 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		B01613A726BE30AA00EAED73 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		B01613A926BE30BD00EAED73 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B01C5A9826B63DC60004C040 /* Sets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sets.swift; sourceTree = "<group>"; };
-		B01C5A9B26B63E270004C040 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		B01C5A9B26B63E270004C040 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B084906026BC2212009BA5A6 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		B0A8D13826A45DA800471634 /* ios_Embedded.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios_Embedded.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0A8D13B26A45DA800471634 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0A8D13D26A45DA800471634 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B0A8D13F26A45DA800471634 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B0A8D13F26A45DA800471634 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B0A8D14426A45DA800471634 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0A8D14726A45DA800471634 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B0A8D14926A45DA800471634 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,13 +62,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B01C5A9A26B63E0C0004C040 /* Main */ = {
+		B01613A126BE2F9E00EAED73 /* Loading */ = {
 			isa = PBXGroup;
 			children = (
-				B0A8D13F26A45DA800471634 /* MainViewController.swift */,
-				B01C5A9B26B63E270004C040 /* MainView.swift */,
+				B01613A326BE2FE500EAED73 /* LoadingView.swift */,
+				B01613A526BE2FF700EAED73 /* LoadingViewController.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		B01613A226BE2FA700EAED73 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B01613A726BE30AA00EAED73 /* MainView.swift */,
+				B01613A926BE30BD00EAED73 /* MainViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		B01C5A9A26B63E0C0004C040 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B0A8D13F26A45DA800471634 /* LoginViewController.swift */,
+				B01C5A9B26B63E270004C040 /* LoginView.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		B0A8D12F26A45DA700471634 = {
@@ -84,9 +110,11 @@
 		B0A8D13A26A45DA800471634 /* ios_Embedded */ = {
 			isa = PBXGroup;
 			children = (
-				B01C5A9A26B63E0C0004C040 /* Main */,
-				B0A8D13B26A45DA800471634 /* AppDelegate.swift */,
+				B01613A126BE2F9E00EAED73 /* Loading */,
+				B01C5A9A26B63E0C0004C040 /* Login */,
+				B01613A226BE2FA700EAED73 /* Main */,
 				B0A8D13D26A45DA800471634 /* SceneDelegate.swift */,
+				B0A8D13B26A45DA800471634 /* AppDelegate.swift */,
 				B0A8D14426A45DA800471634 /* Assets.xcassets */,
 				B0A8D14626A45DA800471634 /* LaunchScreen.storyboard */,
 				B0A8D14926A45DA800471634 /* Info.plist */,
@@ -219,11 +247,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B01C5A9926B63DC60004C040 /* Sets.swift in Sources */,
-				B0A8D14026A45DA800471634 /* MainViewController.swift in Sources */,
+				B01613A826BE30AA00EAED73 /* MainView.swift in Sources */,
+				B0A8D14026A45DA800471634 /* LoginViewController.swift in Sources */,
 				B084906126BC2212009BA5A6 /* MainModel.swift in Sources */,
+				B01613A626BE2FF700EAED73 /* LoadingViewController.swift in Sources */,
 				B0A8D13C26A45DA800471634 /* AppDelegate.swift in Sources */,
-				B01C5A9C26B63E270004C040 /* MainView.swift in Sources */,
+				B01C5A9C26B63E270004C040 /* LoginView.swift in Sources */,
+				B01613A426BE2FE500EAED73 /* LoadingView.swift in Sources */,
 				B0A8D13E26A45DA800471634 /* SceneDelegate.swift in Sources */,
+				B01613AA26BE30BD00EAED73 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
