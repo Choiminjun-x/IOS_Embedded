@@ -17,10 +17,12 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    
+        self.navigationConf()
     }
 
+    private func navigationConf() {
+        self.navigationController?.navigationBar.isHidden = true
+    }
 
 }
 
