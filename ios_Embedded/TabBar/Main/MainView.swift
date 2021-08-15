@@ -23,6 +23,7 @@ class MainView: UIView {
     
     func setAppearance() {
         
+        self.backgroundColor = .cyan
         self.textLabel.do {
             self.addSubview($0)
             $0.snp.makeConstraints {
