@@ -138,22 +138,6 @@ class LoginView: UIView {
         return false
     }
     
-    // TextField 흔들기 애니메이션
-    func shakeTextField(textField: UITextField) -> Void{
-        UIView.animate(withDuration: 0.2, animations: {
-            textField.frame.origin.x -= 10
-        }, completion: { _ in
-            UIView.animate(withDuration: 0.2, animations: {
-                textField.frame.origin.x += 20
-            }, completion: { _ in
-                UIView.animate(withDuration: 0.2, animations: {
-                    textField.frame.origin.x -= 10
-                })
-            })
-        })
-    }
-    
-    
     // 다음 누르면 입력창 넘어가기, 완료 누르면 키보드 내려가기
     @objc func didEndOnExit(_ sender: UITextField) {
         if idTextField.isFirstResponder {
