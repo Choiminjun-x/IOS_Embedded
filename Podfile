@@ -8,6 +8,7 @@ target 'ios_Embedded' do
   pod 'SnapKit'
   pod 'SDWebImage'
   pod 'RxSwift'
+  pod 'RxCocoa'
   # Pods for ios_Embedded
 
 end
