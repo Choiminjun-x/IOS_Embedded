@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import SnapKit
 
 class MainView: UIView {
+    
+    private let textLabel: UILabel = .init()
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -20,5 +23,14 @@ class MainView: UIView {
     
     func setAppearance() {
         
+        self.textLabel.do {
+            self.addSubview($0)
+            $0.snp.makeConstraints {
+                $0.centerX.centerY.width.equalToSuperview()
+                $0.height.equalTo(100)
+                $0.top.equalToSuperview().offset(100)
+            }
+            $0.text = "메인이야~~~~"
+        }
     }
 }

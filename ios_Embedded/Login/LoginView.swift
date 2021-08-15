@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import RxSwift
+import RxCocoa
 
 class LoginView: UIView {
     
@@ -18,6 +19,16 @@ class LoginView: UIView {
     private let idTextField: UITextField = .init()
     private let passwdTextField: UITextField = .init()
     private let loginBtn: UIButton = .init()
+    
+    let disposeBag: DisposeBag = .init()
+    
+    internal var searchListNextEvent: PublishRelay<Void> {
+        get {
+            return self.nextEvent
+        }
+    }
+    internal let nextEvent: PublishRelay<Void> = .init()
+    
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -59,6 +70,7 @@ class LoginView: UIView {
             $0.text = "Login to your Account"
             $0.textAlignment = .left
         }
+        
         self.idTextField.do {
             self.addSubview($0)
             $0.placeholder = "id"
@@ -105,7 +117,16 @@ class LoginView: UIView {
                 $0.width.equalToSuperview().offset(-100)
                 $0.centerX.equalToSuperview()
             }
-            $0.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
+            //로그인 버튼 클릭 했을 경우
+            //            $0.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
+            $0.rx.tap.bind {
+                //로그 잘 찍힘
+                print("clicked")
+            }.disposed(by: disposeBag) //메모리 해제
+            $0.rx.tap.bind {
+//                self.didTapLoginButton(self.loginBtn)
+                self.nextEvent.accept(())
+            }.disposed(by: disposeBag)
         }
         
         
