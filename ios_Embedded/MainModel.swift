@@ -14,8 +14,8 @@ final class UserModel {
     }
     
     var users: [User] = [
-        User(email: "minjun@naver.com", password: "qwerty1234"),
-        User(email: "yewon@naver.com", password: "asdfasdf5678")
+        User(email: "minjun@naver.com", password: "minjun1234"),
+        User(email: "yewon@naver.com", password: "yeah1234")
     ]
     
     // 아이디 형식 검사
