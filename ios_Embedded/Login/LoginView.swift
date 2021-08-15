@@ -29,6 +29,7 @@ class LoginView: UIView {
     }
     internal let nextEvent: PublishRelay<Void> = .init()
     
+    private var loginCheck: Int = 0
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -117,16 +118,12 @@ class LoginView: UIView {
                 $0.width.equalToSuperview().offset(-100)
                 $0.centerX.equalToSuperview()
             }
-            //로그인 버튼 클릭 했을 경우
-            //            $0.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
             $0.rx.tap.bind {
-                //로그 잘 찍힘
-                print("clicked")
-            }.disposed(by: disposeBag) //메모리 해제
-            $0.rx.tap.bind {
-//                self.didTapLoginButton(self.loginBtn)
+                self.didTapLoginButton(self.loginBtn)
+                if self.loginCheck == 1 {
                 self.nextEvent.accept(())
-            }.disposed(by: disposeBag)
+                }
+            }.disposed(by: disposeBag) //메모리 해제
         }
         
         
@@ -203,6 +200,8 @@ class LoginView: UIView {
             let loginSuccess: Bool = loginCheck(id: email, pwd: password)
             if loginSuccess {
                 print("로그인 성공")
+                //로그인 체크 변수 변경 -> 로그인 성공 시
+                self.loginCheck = 1
                 if let removable = self.viewWithTag(102) {
                     removable.removeFromSuperview()
                 }
