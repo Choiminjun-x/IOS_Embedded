@@ -12,24 +12,19 @@ import RxCocoa
 
 class LoginView: UIView {
     
-    var userModel = UserModel()
-    
+    //MARK: - Properties
     private let loginMainLabel: UILabel = .init()
     private let textLabel: UILabel = .init()
     private let idTextField: UITextField = .init()
     private let passwdTextField: UITextField = .init()
     private let loginBtn: UIButton = .init()
     
+    internal var loginBtnClickEvent: PublishRelay<Void> = .init()
     let disposeBag: DisposeBag = .init()
     
-    internal var searchListNextEvent: PublishRelay<Void> {
-        get {
-            return self.nextEvent
-        }
-    }
-    internal let nextEvent: PublishRelay<Void> = .init()
-    
     private var loginCheck: Int = 0
+    
+    var userModel = UserModel()
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -40,8 +35,8 @@ class LoginView: UIView {
         self.setAppearance()
     }
     
+    //MARK: - view
     func setAppearance() {
-        
         self.do {
             $0.backgroundColor = .systemBlue
         }
@@ -121,7 +116,7 @@ class LoginView: UIView {
             $0.rx.tap.bind {
                 self.didTapLoginButton(self.loginBtn)
                 if self.loginCheck == 1 {
-                self.nextEvent.accept(())
+                self.loginBtnClickEvent.accept(())
                 }
             }.disposed(by: disposeBag) //메모리 해제
         }
@@ -129,6 +124,7 @@ class LoginView: UIView {
         
     }
     
+    //MAKR: - login Method 
     func loginCheck(id: String, pwd: String) -> Bool {
         for user in userModel.users {
             if user.email == id && user.password == pwd {

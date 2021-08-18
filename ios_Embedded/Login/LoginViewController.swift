@@ -11,10 +11,12 @@ import RxSwift
 
 class LoginViewController: UIViewController {
     
+    //MARK: - Properties
     private let pageView: LoginView = .init()
     
     let disposeBag: DisposeBag = .init()
     
+    //MARK: - LifeCycle
     override func loadView() {
         self.view = pageView.self
     }
@@ -24,16 +26,18 @@ class LoginViewController: UIViewController {
         self.navigationConf()
         self.pageEvent()
     }
-
+    
     private func navigationConf() {
         self.navigationController?.navigationBar.isHidden = true
     }
     func requestNextPage(){
-        self.navigationController?.pushViewController(MainViewController(), animated: true)
+        let tabPage = TabBarController()
+        tabPage.modalPresentationStyle = .fullScreen
+        self.present(tabPage, animated: true, completion: nil)
     }
     
     func pageEvent() {
-        self.pageView.searchListNextEvent
+        self.pageView.loginBtnClickEvent
             .subscribe(onNext: {
                 self.requestNextPage()
             }).disposed(by: self.disposeBag)

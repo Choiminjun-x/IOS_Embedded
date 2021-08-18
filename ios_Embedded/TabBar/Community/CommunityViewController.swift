@@ -1,18 +1,18 @@
 //
-//  MainViewController.swift
+//  CommunityViewController.swift
 //  ios_Embedded
 //
-//  Created by 최민준 on 2021/08/07.
+//  Created by 최민준 on 2021/08/18.
 //
 
 import UIKit
 
-class MainViewController: UIViewController {
+class CommunityViewController: UIViewController {
     
     //MARK: - Properties
-    private let pageView: MainView = .init()
+    private let pageView: CommunityView = .init()
     
-    //MARK: - LifeCycle
+    //MARK: - LifeCycle 
     override func loadView() {
         self.view = pageView.self
     }

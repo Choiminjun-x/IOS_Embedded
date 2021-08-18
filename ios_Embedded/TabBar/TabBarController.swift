@@ -9,21 +9,20 @@ import UIKit
 
 class TabBarController: UITabBarController {
     
-    private let pageView: TabBarView = .init()
-    
-    override func loadView() {
-        self.view = pageView.self
-    }
-    
+    //MARK: - LifeCycle 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let vc1 = MainViewController()
+        let vc2 = CommunityViewController()
+        
         vc1.title = "메인"
+        vc2.title = "커뮤니티"
         
         let nav1 = UINavigationController(rootViewController: vc1)
+        let nav2 = UINavigationController(rootViewController: vc2)
         
-        setViewControllers([nav1], animated: true)
+        setViewControllers([nav1, nav2], animated: true)
         
     }
 }
