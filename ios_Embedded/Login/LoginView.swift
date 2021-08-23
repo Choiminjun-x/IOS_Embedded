@@ -13,7 +13,7 @@ import RxCocoa
 class LoginView: UIView {
     
     //MARK: - Properties
-    private let loginMainLabel: UILabel = .init()
+    private let logoImageView: UIImageView = .init()
     private let textLabel: UILabel = .init()
     private let idTextField: UITextField = .init()
     private let passwdTextField: UITextField = .init()
@@ -38,21 +38,18 @@ class LoginView: UIView {
     //MARK: - view
     func setAppearance() {
         self.do {
-            $0.backgroundColor = .systemBlue
+            $0.backgroundColor = .init(red: 000/255, green: 153/255, blue: 255/255, alpha: 1)
         }
         
-        self.loginMainLabel.do {
+        self.logoImageView.do {
             self.addSubview($0)
             $0.snp.makeConstraints {
                 $0.centerX.equalToSuperview()
-                $0.width.equalToSuperview()
-                $0.height.equalTo(100)
-                $0.top.equalToSuperview().offset(100)
+                $0.height.equalTo(50)
+                $0.width.equalTo(self.logoImageView.snp.height).multipliedBy(6.78)
+                $0.top.equalToSuperview().offset(130)
             }
-            $0.text = "이미지뷰로 로고 붙히는 곳"
-            $0.textAlignment = .center
-            $0.font = .systemFont(ofSize: 30)
-            
+            $0.image = UIImage(named: "logo")
         }
         
         self.textLabel.do {
@@ -61,7 +58,7 @@ class LoginView: UIView {
                 $0.centerX.equalToSuperview()
                 $0.width.equalToSuperview().offset(-100)
                 $0.height.equalTo(50)
-                $0.top.equalTo(self.loginMainLabel.snp.bottom).offset(55)
+                $0.top.equalTo(self.logoImageView.snp.bottom).offset(75)
             }
             $0.text = "Login to your Account"
             $0.textAlignment = .left
@@ -70,14 +67,14 @@ class LoginView: UIView {
         self.idTextField.do {
             self.addSubview($0)
             $0.placeholder = "id"
-            $0.textColor = .white
+            $0.textColor = .black
             $0.textAlignment = .center
             $0.layer.borderWidth = 3
-            $0.layer.cornerRadius = 10
+            $0.layer.cornerRadius = 15
             $0.layer.borderColor = .init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
             $0.snp.makeConstraints {
                 $0.centerX.equalToSuperview()
-                $0.top.equalTo(self.loginMainLabel.snp.bottom).offset(110)
+                $0.top.equalTo(self.logoImageView.snp.bottom).offset(130)
                 $0.width.equalToSuperview().offset(-100)
                 $0.height.equalTo(50)
             }
@@ -87,10 +84,10 @@ class LoginView: UIView {
         self.passwdTextField.do {
             self.addSubview($0)
             $0.placeholder = "password"
-            $0.textColor = .white
+            $0.textColor = .black
             $0.textAlignment = .center
             $0.layer.borderWidth = 3
-            $0.layer.cornerRadius = 10
+            $0.layer.cornerRadius = 15
             $0.layer.borderColor = .init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
             $0.snp.makeConstraints {
                 $0.centerX.equalToSuperview()
@@ -106,7 +103,7 @@ class LoginView: UIView {
             $0.setTitle("Sign in", for: .normal)
             $0.setTitleColor(.black, for: .normal)
             $0.backgroundColor = .white
-            $0.layer.cornerRadius = 10
+            $0.layer.cornerRadius = 15
             $0.snp.makeConstraints{
                 $0.top.equalTo(passwdTextField.snp.bottom).offset(15)
                 $0.height.equalTo(40)
@@ -116,7 +113,7 @@ class LoginView: UIView {
             $0.rx.tap.bind {
                 self.didTapLoginButton(self.loginBtn)
                 if self.loginCheck == 1 {
-                self.loginBtnClickEvent.accept(())
+                    self.loginBtnClickEvent.accept(())
                 }
             }.disposed(by: disposeBag) //메모리 해제
         }
