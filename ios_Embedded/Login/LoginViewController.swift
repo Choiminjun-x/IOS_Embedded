@@ -30,6 +30,7 @@ class LoginViewController: UIViewController {
     private func navigationConf() {
         self.navigationController?.navigationBar.isHidden = true
     }
+    
     func requestNextPage(){
         let tabPage = TabBarController()
         tabPage.modalPresentationStyle = .fullScreen
@@ -42,5 +43,8 @@ class LoginViewController: UIViewController {
                 self.requestNextPage()
             }).disposed(by: self.disposeBag)
     }
-
+    
+    //아무 곳이나 화면 터치 시 키보드 내리기 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){ self.view.endEditing(true)
+    }
 }

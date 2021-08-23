@@ -10,7 +10,7 @@ import UIKit
 class LoadingView: UIView {
     
     //MARK: - Properties
-    private let loadingMainLogoLabel: UILabel = .init()
+    private let logoImageView: UIImageView = .init()
     
     //MARK: - LifeCycle
     required init?(coder: NSCoder) {
@@ -24,18 +24,17 @@ class LoadingView: UIView {
     
     //MARK: - view
     func setAppearance() {
-        self.backgroundColor = .systemBlue
+        self.backgroundColor = .init(red: 000/255, green: 153/255, blue: 255/255, alpha: 1) //스카이 블루 느낌 컬러
         
-        self.loadingMainLogoLabel.do {
+        self.logoImageView.do {
             self.addSubview($0)
             $0.snp.makeConstraints {
-                $0.width.centerY.centerX.equalToSuperview()
-                $0.height.equalTo(100)
+                $0.centerX.equalToSuperview()
+                $0.top.equalToSuperview().offset(300)
+                $0.width.equalTo(self.logoImageView.snp.height).multipliedBy(6.78)
+                $0.height.equalTo(70)
             }
-            $0.text = "메인 로고 들어갈 곳"
-            $0.textAlignment = .center
-            $0.font = .systemFont(ofSize: 30)
-            $0.textColor = .white
+            $0.image = UIImage(named: "logo")
         }
     }
 }
