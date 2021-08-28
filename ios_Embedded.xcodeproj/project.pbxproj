@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		25075A0A9380971273E7BC1C /* Pods_ios_Embedded.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90F125B27D23AD08911A30F /* Pods_ios_Embedded.framework */; };
+		346414DF26DA90D500832E2F /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346414DE26DA90D500832E2F /* SocketIOManager.swift */; };
 		B01613A426BE2FE500EAED73 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01613A326BE2FE500EAED73 /* LoadingView.swift */; };
 		B01613A626BE2FF700EAED73 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01613A526BE2FF700EAED73 /* LoadingViewController.swift */; };
 		B01613A826BE30AA00EAED73 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01613A726BE30AA00EAED73 /* MainView.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		0C10E510EED713E9780959EB /* Pods-ios_Embedded.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios_Embedded.release.xcconfig"; path = "Target Support Files/Pods-ios_Embedded/Pods-ios_Embedded.release.xcconfig"; sourceTree = "<group>"; };
 		1CA76C2FC6C5AA2E75A12FC8 /* Pods-ios_Embedded.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios_Embedded.debug.xcconfig"; path = "Target Support Files/Pods-ios_Embedded/Pods-ios_Embedded.debug.xcconfig"; sourceTree = "<group>"; };
+		346414DE26DA90D500832E2F /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		B01613A326BE2FE500EAED73 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B01613A526BE2FF700EAED73 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		B01613A726BE30AA00EAED73 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				B0A8D14626A45DA800471634 /* LaunchScreen.storyboard */,
 				B0A8D14926A45DA800471634 /* Info.plist */,
 				B01C5A9826B63DC60004C040 /* Sets.swift */,
+				346414DE26DA90D500832E2F /* SocketIOManager.swift */,
 				B084906026BC2212009BA5A6 /* MainModel.swift */,
 			);
 			path = ios_Embedded;
@@ -285,6 +288,7 @@
 				B0A8D13C26A45DA800471634 /* AppDelegate.swift in Sources */,
 				B01C5A9C26B63E270004C040 /* LoginView.swift in Sources */,
 				B01613A426BE2FE500EAED73 /* LoadingView.swift in Sources */,
+				346414DF26DA90D500832E2F /* SocketIOManager.swift in Sources */,
 				B0A8D13E26A45DA800471634 /* SceneDelegate.swift in Sources */,
 				B02F6BF826DA680300722FDD /* CommunityListCell.swift in Sources */,
 				B01613AA26BE30BD00EAED73 /* MainViewController.swift in Sources */,

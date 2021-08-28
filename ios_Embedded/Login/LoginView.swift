@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import SocketIO
 
 class LoginView: UIView {
     
@@ -26,6 +27,8 @@ class LoginView: UIView {
     
     var userModel = UserModel()
     
+    //private var socket: SocketIOManager = .init()
+    
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -33,6 +36,9 @@ class LoginView: UIView {
     required init() {
         super.init(frame: .zero)
         self.setAppearance()
+        //socket = SocketIOManager()
+        //print("socket connect")
+        //socket.establishConnection()
     }
     
     //MARK: - view
@@ -123,6 +129,8 @@ class LoginView: UIView {
     
     //MAKR: - login Method 
     func loginCheck(id: String, pwd: String) -> Bool {
+//        socket.socket.emit("logincheck" , ["id" : id, "password" : pwd])
+        
         for user in userModel.users {
             if user.email == id && user.password == pwd {
                 return true // 로그인 성공
@@ -140,6 +148,8 @@ class LoginView: UIView {
     
     //로그인 버튼 클릭 시
     @objc func didTapLoginButton(_ sender: UIButton) {
+        
+        
         // 옵셔널 바인딩 & 예외 처리 : Textfield가 빈문자열이 아니고, nil이 아닐 때
         guard let email = idTextField.text, !email.isEmpty else { return }
         guard let password = passwdTextField.text, !password.isEmpty else { return }
@@ -174,6 +184,24 @@ class LoginView: UIView {
         } // 비밀번호 형식 오류
         
         if userModel.isValidEmail(id: email) && userModel.isValidPassword(pwd: password) {
+            
+//            loginCheck(id: email, pwd: password)
+//            socket.socket.on("success"){_,_ in
+//                print("로그인 성공")
+//                self.loginCheck = 1
+//                if let removable = self.viewWithTag(102) {
+//                        removable.removeFromSuperview()
+//                }
+//            }
+//            socket.socket.on("fail"){_,_ in
+//                print("로그인 실패")
+//                let loginFailLabel = UILabel(frame: CGRect(x: 68, y: 510, width: 279, height: 45))
+//                loginFailLabel.text = "아이디나 비밀번호가 다릅니다."
+//                loginFailLabel.textColor = UIColor.red
+//                loginFailLabel.tag = 102
+//
+//                self.addSubview(loginFailLabel)
+//            }
             let loginSuccess: Bool = loginCheck(id: email, pwd: password)
             if loginSuccess {
                 print("로그인 성공")
@@ -183,7 +211,7 @@ class LoginView: UIView {
                     removable.removeFromSuperview()
                 }
                 //로그인 성공 시 넘어가는 코드 -> 민준 작업 Rx로
-                
+
                 //self.performSegue(withIdentifier: "showMain", sender: self)
             }
             else {
@@ -192,7 +220,7 @@ class LoginView: UIView {
                 loginFailLabel.text = "아이디나 비밀번호가 다릅니다."
                 loginFailLabel.textColor = UIColor.red
                 loginFailLabel.tag = 102
-                
+
                 self.addSubview(loginFailLabel)
             }
         }

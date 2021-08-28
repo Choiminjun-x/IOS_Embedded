@@ -10,6 +10,9 @@ PODS:
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
   - SnapKit (5.0.1)
+  - Socket.IO-Client-Swift (16.0.1):
+    - Starscream (~> 4.0)
+  - Starscream (4.0.4)
 
 DEPENDENCIES:
   - Alamofire
@@ -17,6 +20,7 @@ DEPENDENCIES:
   - RxSwift
   - SDWebImage
   - SnapKit
+  - Socket.IO-Client-Swift
 
 SPEC REPOS:
   trunk:
@@ -26,6 +30,8 @@ SPEC REPOS:
     - RxSwift
     - SDWebImage
     - SnapKit
+    - Socket.IO-Client-Swift
+    - Starscream
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
@@ -34,7 +40,9 @@ SPEC CHECKSUMS:
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Socket.IO-Client-Swift: c116d6dc9fd6be9c259bacfe143f8725bce7d79e
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
 
-PODFILE CHECKSUM: f1dfaa2263c3a0b2a18a2b09d8982b432a4d66e2
+PODFILE CHECKSUM: 885021168378179c2fc7be9067ab8904e719839a
 
 COCOAPODS: 1.10.2
