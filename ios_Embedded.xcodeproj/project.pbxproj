@@ -16,6 +16,7 @@
 		B01C5A9C26B63E270004C040 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01C5A9B26B63E270004C040 /* LoginView.swift */; };
 		B029600226CD4D530019EAEA /* CommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B029600126CD4D530019EAEA /* CommunityView.swift */; };
 		B029600426CD4D5F0019EAEA /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B029600326CD4D5F0019EAEA /* CommunityViewController.swift */; };
+		B02F6BF826DA680300722FDD /* CommunityListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02F6BF726DA680300722FDD /* CommunityListCell.swift */; };
 		B052136826C5581F00BC6EBE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B052136726C5581F00BC6EBE /* TabBarController.swift */; };
 		B084906126BC2212009BA5A6 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B084906026BC2212009BA5A6 /* MainModel.swift */; };
 		B0A8D13C26A45DA800471634 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A8D13B26A45DA800471634 /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 		B01C5A9B26B63E270004C040 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B029600126CD4D530019EAEA /* CommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityView.swift; sourceTree = "<group>"; };
 		B029600326CD4D5F0019EAEA /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
+		B02F6BF726DA680300722FDD /* CommunityListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityListCell.swift; sourceTree = "<group>"; };
 		B052136726C5581F00BC6EBE /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B084906026BC2212009BA5A6 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		B0A8D13826A45DA800471634 /* ios_Embedded.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios_Embedded.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +102,7 @@
 			children = (
 				B029600126CD4D530019EAEA /* CommunityView.swift */,
 				B029600326CD4D5F0019EAEA /* CommunityViewController.swift */,
+				B02F6BF726DA680300722FDD /* CommunityListCell.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				B01C5A9C26B63E270004C040 /* LoginView.swift in Sources */,
 				B01613A426BE2FE500EAED73 /* LoadingView.swift in Sources */,
 				B0A8D13E26A45DA800471634 /* SceneDelegate.swift in Sources */,
+				B02F6BF826DA680300722FDD /* CommunityListCell.swift in Sources */,
 				B01613AA26BE30BD00EAED73 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

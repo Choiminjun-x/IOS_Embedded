@@ -17,7 +17,9 @@ class TabBarController: UITabBarController {
         let vc2 = CommunityViewController()
         
         vc1.title = "메인"
+        vc1.tabBarItem.image = UIImage(systemName: "house")
         vc2.title = "커뮤니티"
+        vc2.tabBarItem.image = UIImage(systemName: "message")
         
         let nav1 = UINavigationController(rootViewController: vc1)
         let nav2 = UINavigationController(rootViewController: vc2)
