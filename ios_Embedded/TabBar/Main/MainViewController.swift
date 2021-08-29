@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
     //MARK: - LifeCycle
     override func loadView() {
         self.view = pageView.self
+        //민준
     }
     
     override func viewDidLoad() {
