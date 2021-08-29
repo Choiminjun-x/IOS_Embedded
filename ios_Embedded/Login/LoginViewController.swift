@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
     
     //MARK: - Properties
     private let pageView: LoginView = .init()
+    private var socket: SocketIOManager = .init()
     
     let disposeBag: DisposeBag = .init()
     
@@ -23,6 +24,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationConf()
         self.pageEvent()
     }

@@ -9,6 +9,7 @@ target 'ios_Embedded' do
   pod 'SDWebImage'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'Socket.IO-Client-Swift'
   # Pods for ios_Embedded
 
 end
