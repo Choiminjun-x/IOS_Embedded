@@ -20,6 +20,6 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //취업시켜주삼
+        //github test sibal
     }
 }
