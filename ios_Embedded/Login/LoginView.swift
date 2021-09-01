@@ -27,8 +27,6 @@ class LoginView: UIView {
     
     var userModel = UserModel()
     
-    //var socket: SocketIOManager! SocketIOClient??
-    
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -36,9 +34,6 @@ class LoginView: UIView {
     required init() {
         super.init(frame: .zero)
         self.setAppearance()
-//        socket = SocketIOManager()
-//        socket.establishConnection()
-//        socket.sendMessage(message: "why?")
     }
     
     
@@ -128,13 +123,11 @@ class LoginView: UIView {
         
     }
     
-    //MARK: - login Method 
+
+    //MAKR: - login Method 
     func loginCheck(id: String, pwd: String) -> Bool {
-        //서버로 여기서 아이디랑 비밀번호 전달
-//        print("logincheck")
-//        SocketIOManager.shared.socket.emit("logincheck", ["id" : id, "password" : pwd])
-        //SocketIOManager.shared.sendMessage(message: "dsds")
-                
+
+
         for user in userModel.users {
             if user.email == id && user.password == pwd {
                 return true // 로그인 성공
@@ -188,23 +181,6 @@ class LoginView: UIView {
         } // 비밀번호 형식 오류
         
         if userModel.isValidEmail(id: email) && userModel.isValidPassword(pwd: password) {
-//
-//            loginCheck(id: email, pwd: password)
-//            SocketIOManager.shared.socket.on("success"){_,_ in
-//                self.loginCheck = 1
-//                if let removable = self.viewWithTag(102){
-//                    removable.removeFromSuperview()
-//                }
-//            }
-//            SocketIOManager.shared.socket.on("fail"){_,_ in
-//                print("login fail")
-//                let loginFailLabel = UILabel(frame: CGRect(x: 68, y: 510, width: 279, height: 45))
-//                loginFailLabel.text = "아이디나 비밀번호가 다릅니다."
-//                loginFailLabel.textColor = UIColor.red
-//                loginFailLabel.tag = 102
-//
-//                self.addSubview(loginFailLabel)
-//            }
             
             let loginSuccess: Bool = loginCheck(id: email, pwd: password)
             if loginSuccess {
