@@ -8,14 +8,15 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import SocketIO
 
 class LoginViewController: UIViewController {
     
     //MARK: - Properties
     private let pageView: LoginView = .init()
-    private var socket: SocketIOManager = .init()
     
     let disposeBag: DisposeBag = .init()
+    var socket: SocketIOClient!
     
     //MARK: - LifeCycle
     override func loadView() {
@@ -27,6 +28,7 @@ class LoginViewController: UIViewController {
         
         self.navigationConf()
         self.pageEvent()
+        
     }
     
     private func navigationConf() {

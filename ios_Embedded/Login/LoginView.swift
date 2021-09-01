@@ -27,7 +27,7 @@ class LoginView: UIView {
     
     var userModel = UserModel()
     
-    //private var socket: SocketIOManager = .init()
+    //var socket: SocketIOManager! SocketIOClient??
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -36,10 +36,11 @@ class LoginView: UIView {
     required init() {
         super.init(frame: .zero)
         self.setAppearance()
-        //socket = SocketIOManager()
-        //print("socket connect")
-        //socket.establishConnection()
+//        socket = SocketIOManager()
+//        socket.establishConnection()
+//        socket.sendMessage(message: "why?")
     }
+    
     
     //MARK: - view
     func setAppearance() {
@@ -128,9 +129,12 @@ class LoginView: UIView {
     }
     
     //MAKR: - login Method 
-    func loginCheck(id: String, pwd: String) -> Bool {
-//        socket.socket.emit("logincheck" , ["id" : id, "password" : pwd])
-        
+    func loginCheck(id: String, pwd: String) -> Void {
+        //서버로 여기서 아이디랑 비밀번호 전달
+//        print("logincheck")
+//        SocketIOManager.shared.socket.emit("logincheck", ["id" : id, "password" : pwd])
+        //SocketIOManager.shared.sendMessage(message: "dsds")
+                
         for user in userModel.users {
             if user.email == id && user.password == pwd {
                 return true // 로그인 성공
@@ -184,17 +188,16 @@ class LoginView: UIView {
         } // 비밀번호 형식 오류
         
         if userModel.isValidEmail(id: email) && userModel.isValidPassword(pwd: password) {
-            
+//
 //            loginCheck(id: email, pwd: password)
-//            socket.socket.on("success"){_,_ in
-//                print("로그인 성공")
+//            SocketIOManager.shared.socket.on("success"){_,_ in
 //                self.loginCheck = 1
-//                if let removable = self.viewWithTag(102) {
-//                        removable.removeFromSuperview()
+//                if let removable = self.viewWithTag(102){
+//                    removable.removeFromSuperview()
 //                }
 //            }
-//            socket.socket.on("fail"){_,_ in
-//                print("로그인 실패")
+//            SocketIOManager.shared.socket.on("fail"){_,_ in
+//                print("login fail")
 //                let loginFailLabel = UILabel(frame: CGRect(x: 68, y: 510, width: 279, height: 45))
 //                loginFailLabel.text = "아이디나 비밀번호가 다릅니다."
 //                loginFailLabel.textColor = UIColor.red
@@ -202,6 +205,7 @@ class LoginView: UIView {
 //
 //                self.addSubview(loginFailLabel)
 //            }
+            
             let loginSuccess: Bool = loginCheck(id: email, pwd: password)
             if loginSuccess {
                 print("로그인 성공")
@@ -210,9 +214,7 @@ class LoginView: UIView {
                 if let removable = self.viewWithTag(102) {
                     removable.removeFromSuperview()
                 }
-                //로그인 성공 시 넘어가는 코드 -> 민준 작업 Rx로
 
-                //self.performSegue(withIdentifier: "showMain", sender: self)
             }
             else {
                 print("로그인 실패")

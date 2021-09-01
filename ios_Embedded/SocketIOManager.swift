@@ -13,8 +13,6 @@ class SocketIOManager: NSObject{
     var manager = SocketManager(socketURL: URL(string: "http://localhost:9000")!, config: [.log(true), .compress])
     var socket: SocketIOClient!
     
-    //var socket: SocketIOClient = SocketIOClient(socketURL: NSURL(string: "http://192.168.1.XXX:3000")!)
-
     
     override init() {
         super.init()
@@ -33,6 +31,7 @@ class SocketIOManager: NSObject{
     }
     
     func sendMessage(message: String){
-        socket.emit(message)
+        socket.emit("test", message)
     }
+    
 }
