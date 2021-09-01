@@ -128,8 +128,8 @@ class LoginView: UIView {
         
     }
     
-    //MAKR: - login Method 
-    func loginCheck(id: String, pwd: String) -> Void {
+    //MARK: - login Method 
+    func loginCheck(id: String, pwd: String) -> Bool {
         //서버로 여기서 아이디랑 비밀번호 전달
 //        print("logincheck")
 //        SocketIOManager.shared.socket.emit("logincheck", ["id" : id, "password" : pwd])
