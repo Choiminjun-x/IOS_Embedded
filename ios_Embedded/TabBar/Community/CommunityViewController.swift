@@ -12,7 +12,6 @@ struct Result {
 }
 
 class CommunityViewController: UIViewController {
-    
     //MARK: - Properties
     private let pageView: CommunityView = .init()
     
@@ -27,7 +26,7 @@ class CommunityViewController: UIViewController {
         self.results = []
         self.makeCellModels()
     }
-    
+
     //cell에 넣을 모델을 만들어주는 과정 
     func makeCellModels() {
         var result = Result()
@@ -38,6 +37,7 @@ class CommunityViewController: UIViewController {
         results?.append(result)
         result.name = "third community name"
         results?.append(result)
+        
         
         let cellModels: [CommnuityListCellModel] = results?.compactMap {
             guard let name = $0.name else { return nil }

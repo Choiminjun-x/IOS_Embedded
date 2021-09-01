@@ -123,8 +123,10 @@ class LoginView: UIView {
         
     }
     
+
     //MAKR: - login Method 
     func loginCheck(id: String, pwd: String) -> Bool {
+
 
         for user in userModel.users {
             if user.email == id && user.password == pwd {
