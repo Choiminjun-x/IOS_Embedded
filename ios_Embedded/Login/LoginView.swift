@@ -52,10 +52,10 @@ class LoginView: UIView {
             $0.snp.makeConstraints {
                 $0.centerX.equalToSuperview()
                 $0.height.equalTo(50)
-                $0.width.equalTo(self.logoImageView.snp.height).multipliedBy(6.78)
+                $0.width.equalTo(self.logoImageView.snp.height).multipliedBy(2.511)
                 $0.top.equalToSuperview().offset(130)
             }
-            $0.image = UIImage(named: "logo")
+            $0.image = UIImage(named: "LoginLogoImage")
         }
         
         self.textLabel.do {
