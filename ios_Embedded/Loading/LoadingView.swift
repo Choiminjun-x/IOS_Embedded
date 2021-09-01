@@ -30,11 +30,11 @@ class LoadingView: UIView {
             self.addSubview($0)
             $0.snp.makeConstraints {
                 $0.centerX.equalToSuperview()
-                $0.top.equalToSuperview().offset(300)
-                $0.width.equalTo(self.logoImageView.snp.height).multipliedBy(6.78)
-                $0.height.equalTo(70)
+                $0.top.equalToSuperview().offset(340)
+                $0.width.equalTo(self.logoImageView.snp.height).multipliedBy(1.968)
+                $0.height.equalTo(90)
             }
-            $0.image = UIImage(named: "logo")
+            $0.image = UIImage(named: "MainLogoImage")
         }
     }
 }

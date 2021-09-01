@@ -16,7 +16,7 @@ class CommunityListCell: UITableViewCell {
     
     //MARK: - Properties
     private let vstackView: UIStackView = .init()
-    private let nameLabel: UILabel = .init()
+    private let titleLabel: UILabel = .init()
     
     // Object LifeCycle
     required init?(coder: NSCoder) {
@@ -41,7 +41,7 @@ class CommunityListCell: UITableViewCell {
             $0.distribution = .fill
         }
         
-        self.nameLabel.do {
+        self.titleLabel.do {
             vstackView.addArrangedSubview($0)
             $0.snp.makeConstraints {
                 $0.width.height.equalToSuperview()
@@ -52,6 +52,6 @@ class CommunityListCell: UITableViewCell {
     }
     
     func displayCellModel(_ model: CommnuityListCellModel) {
-        self.nameLabel.text = model.title
+        self.titleLabel.text = model.title
     }
 }

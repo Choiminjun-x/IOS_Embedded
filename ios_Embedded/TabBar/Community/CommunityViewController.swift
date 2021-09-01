@@ -28,11 +28,15 @@ class CommunityViewController: UIViewController {
         self.makeCellModels()
     }
     
+    //cell에 넣을 모델을 만들어주는 과정 
     func makeCellModels() {
         var result = Result()
+        //여기서 커뮤니티 크롤링한거 다 넣어주면 되는거야 예원아
         result.name = "first community name"
         results?.append(result)
         result.name = "second community name"
+        results?.append(result)
+        result.name = "third community name"
         results?.append(result)
         
         let cellModels: [CommnuityListCellModel] = results?.compactMap {
