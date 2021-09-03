@@ -11,6 +11,18 @@ import RxSwift
 import RxCocoa
 import SocketIO
 
+class UserInfo {
+    static let shared = UserInfo()
+    
+    var email: String?
+    var password: String?
+    var name: String?
+    var carName: String?
+    var carRealName: String?
+    var carNumber: String?
+    private init() {}
+}
+
 class LoginView: UIView {
     
     //MARK: - Properties
@@ -20,12 +32,15 @@ class LoginView: UIView {
     private let passwdTextField: UITextField = .init()
     private let loginBtn: UIButton = .init()
     
+    private let testBtn: UIButton = .init()
+    
     internal var loginBtnClickEvent: PublishRelay<Void> = .init()
     let disposeBag: DisposeBag = .init()
     
     private var loginCheck: Int = 0
     
     var userModel = UserModel()
+    var userInfo = UserInfo.shared
     
     required init?(coder: NSCoder) {
         fatalError()
@@ -120,16 +135,42 @@ class LoginView: UIView {
             }.disposed(by: disposeBag) //메모리 해제
         }
         
-        
+        //****** 테스트 버튼임 ******
+        self.testBtn.do {
+            self.addSubview($0)
+            $0.backgroundColor = .white
+            $0.setTitle("테스트 버튼", for: .normal)
+            $0.setTitleColor(.black, for: .normal)
+            $0.snp.makeConstraints {
+                $0.top.equalTo(loginBtn.snp.bottom).offset(15)
+                $0.height.equalTo(40)
+                $0.width.equalToSuperview().offset(-100)
+                $0.centerX.equalToSuperview()
+            }
+            $0.rx.tap.bind {
+                self.userInfo.email = "minjun@naver.com"
+                self.userInfo.password = "1234"
+                self.userInfo.carName = "붕붕쓰"
+                self.userInfo.carNumber = "40가 1234"
+                self.userInfo.name = "최민준"
+                self.userInfo.carRealName = "페라리"
+                
+                self.loginBtnClickEvent.accept(())
+            }.disposed(by: disposeBag) //메모리 해제
+        }
     }
+    //****** 테스트 버튼임 ******
     
-
-    //MAKR: - login Method 
+    //MARK: - login Method
     func loginCheck(id: String, pwd: String) -> Bool {
-
-
         for user in userModel.users {
             if user.email == id && user.password == pwd {
+                userInfo.email = user.email
+                userInfo.password = user.password
+                userInfo.carName = user.carName
+                userInfo.carNumber = user.carNumber
+                userInfo.name = user.name
+                userInfo.carRealName = user.carRealName
                 return true // 로그인 성공
             }
         }
@@ -145,7 +186,6 @@ class LoginView: UIView {
     
     //로그인 버튼 클릭 시
     @objc func didTapLoginButton(_ sender: UIButton) {
-        
         
         // 옵셔널 바인딩 & 예외 처리 : Textfield가 빈문자열이 아니고, nil이 아닐 때
         guard let email = idTextField.text, !email.isEmpty else { return }
@@ -190,7 +230,7 @@ class LoginView: UIView {
                 if let removable = self.viewWithTag(102) {
                     removable.removeFromSuperview()
                 }
-
+                
             }
             else {
                 print("로그인 실패")
@@ -198,7 +238,7 @@ class LoginView: UIView {
                 loginFailLabel.text = "아이디나 비밀번호가 다릅니다."
                 loginFailLabel.textColor = UIColor.red
                 loginFailLabel.tag = 102
-
+                
                 self.addSubview(loginFailLabel)
             }
         }

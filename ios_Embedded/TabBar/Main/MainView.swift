@@ -17,6 +17,7 @@ enum ScrollCase {
 
 class MainView: UIView {
     //MARK: - Properties
+    
     //MARK: - 전체 ScrollView
     private let vscrollView: UIScrollView = .init()
     private let contentView: UIView = .init()
@@ -40,7 +41,8 @@ class MainView: UIView {
     
     private let carInfoHstackView: UIStackView = .init()
     private let carInfoLabel: UILabel = .init()
-    private let carInfoLabel2: UILabel = .init()
+    private let carInfoBtn: UIButton = .init()
+    internal let carInfoBtnEvent: PublishRelay<Void> = .init()
     
     private let carInfoHstackView2: UIStackView = .init()
     private let carImageView: UIButton = .init()
@@ -62,12 +64,12 @@ class MainView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError()
-        
     }
     required init() {
         super.init(frame: .zero)
         self.setAppearance()
     }
+    
     //스크롤 셋팅 메소드
     func settingScroll(_ isScroll: ScrollCase) {
         switch isScroll {
@@ -75,9 +77,7 @@ class MainView: UIView {
             self.adScrollView.alwaysBounceHorizontal = true
         case .unable :
             self.adScrollView.alwaysBounceHorizontal = false
-            
         }
-        
     }
     
     //MARK: -   View Method
@@ -147,7 +147,7 @@ class MainView: UIView {
             $0.snp.makeConstraints {
                 $0.width.equalTo(80)
             }
-            $0.text = "최민준님"
+            $0.text = "\(UserInfo.shared.name ?? "")" + "님"
             $0.font = .boldSystemFont(ofSize: 17)
             $0.textColor = .black
         }
@@ -240,15 +240,20 @@ class MainView: UIView {
             $0.textColor = .black
             $0.font = .boldSystemFont(ofSize: 20)
         }
-        self.carInfoLabel2.do {
+        self.carInfoBtn.do {
             carInfoHstackView.addArrangedSubview($0)
             $0.snp.makeConstraints {
                 $0.width.equalTo(60)
             }
-            $0.text = "더보기"
-            $0.textColor = .gray
-            $0.font = .systemFont(ofSize: 13)
-            
+            $0.setImage(UIImage(systemName: "plus.magnifyingglass"), for: .normal)
+            $0.tintColor = .black
+            $0.rx
+                .tap
+                .asDriver()
+                .asObservable()
+                .subscribe(onNext:{
+                    self.carInfoBtnEvent.accept(())
+                }).disposed(by: disposeBag)
         }
         self.carInfoHstackView2.do {
             carInfoVstackView.addArrangedSubview($0)
@@ -276,13 +281,13 @@ class MainView: UIView {
         }
         self.carNameLabel.do {
             carinfoVstackView2.addArrangedSubview($0)
-            $0.text = "붕붕이"
+            $0.text = "\(UserInfo.shared.carName ?? "")"
             $0.textColor = .black
             $0.font = .boldSystemFont(ofSize: 17)
         }
         self.carRealNameLabel.do {
             carinfoVstackView2.addArrangedSubview($0)
-            $0.text = "기아 K5"
+            $0.text = "\(UserInfo.shared.carRealName ?? "")"
             $0.textColor = .gray
             $0.font = .systemFont(ofSize: 13)
         }
