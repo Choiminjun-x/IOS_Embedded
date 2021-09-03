@@ -35,6 +35,8 @@ class LoginView: UIView {
     private let testBtn: UIButton = .init()
     
     internal var loginBtnClickEvent: PublishRelay<Void> = .init()
+    internal var loginFailEvent: PublishRelay<Void> = .init()
+    
     let disposeBag: DisposeBag = .init()
     
     private var loginCheck: Int = 0
@@ -51,12 +53,10 @@ class LoginView: UIView {
         self.setAppearance()
     }
     
-    
     //MARK: - view
     func setAppearance() {
-        self.do {
-            $0.backgroundColor = .init(red: 000/255, green: 153/255, blue: 255/255, alpha: 1)
-        }
+        
+        self.backgroundColor = .init(red: 000/255, green: 153/255, blue: 255/255, alpha: 1)
         
         self.logoImageView.do {
             self.addSubview($0)
@@ -197,13 +197,14 @@ class LoginView: UIView {
             }
         }
         else {
-            let emailLabel = UILabel(frame: CGRect(x: 68, y: 500, width: 279, height: 45))
-            emailLabel.text = "이메일 형식을 확인해 주세요"
-            emailLabel.textColor = UIColor.red
-            emailLabel.tag = 100
-            
-            
-            self.addSubview(emailLabel)
+            self.loginFailEvent.accept(())
+//            let emailLabel = UILabel(frame: CGRect(x: 68, y: 500, width: 279, height: 45))
+//            emailLabel.text = "이메일 형식을 확인해 주세요"
+//            emailLabel.textColor = UIColor.red
+//            emailLabel.tag = 100
+//
+//
+//            self.addSubview(emailLabel)
         } // 이메일 형식 오류
         
         if userModel.isValidPassword(pwd: password){
@@ -212,12 +213,13 @@ class LoginView: UIView {
             }
         }
         else{
-            let passwordLabel = UILabel(frame: CGRect(x: 68, y: 555, width: 279, height: 45))
-            passwordLabel.text = "비밀번호 형식을 확인해 주세요"
-            passwordLabel.textColor = UIColor.red
-            passwordLabel.tag = 101
-            
-            self.addSubview(passwordLabel)
+            self.loginFailEvent.accept(())
+//            let passwordLabel = UILabel(frame: CGRect(x: 68, y: 555, width: 279, height: 45))
+//            passwordLabel.text = "비밀번호 형식을 확인해 주세요"
+//            passwordLabel.textColor = UIColor.red
+//            passwordLabel.tag = 101
+//
+//            self.addSubview(passwordLabel)
         } // 비밀번호 형식 오류
         
         if userModel.isValidEmail(id: email) && userModel.isValidPassword(pwd: password) {

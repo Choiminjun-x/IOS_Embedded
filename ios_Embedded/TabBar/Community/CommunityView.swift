@@ -27,7 +27,7 @@ class CommunityView: UIView {
     func setAppearance() {
         
         self.backgroundColor = .white
-        //self.backgroundColor = UIColor(displayP3Red: 220/255, green: 222/255, blue: 222/255, alpha: 1)
+        self.backgroundColor = UIColor(displayP3Red: 235/255, green: 251/255, blue: 255/255, alpha: 1)
 
         self.communityListView.do {
             self.addSubview($0)

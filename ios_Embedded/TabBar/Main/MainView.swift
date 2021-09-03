@@ -82,7 +82,6 @@ class MainView: UIView {
     
     //MARK: -   View Method
     private func setAppearance() {
-        self.backgroundColor = UIColor(displayP3Red: 220/255, green: 222/255, blue: 222/255, alpha: 1)
         //MARK: - 전체 ScrollView
         self.vscrollView.do {
             self.addSubview($0)

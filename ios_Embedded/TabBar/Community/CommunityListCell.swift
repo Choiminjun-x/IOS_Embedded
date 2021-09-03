@@ -31,7 +31,7 @@ class CommunityListCell: UITableViewCell {
     private func setAppearance() {
         
         self.vstackView.do {
-            $0.backgroundColor = UIColor(displayP3Red: 220/255, green: 222/255, blue: 222/255, alpha: 1)
+            self.backgroundColor = UIColor(displayP3Red: 235/255, green: 251/255, blue: 255/255, alpha: 1)
             self.addSubview($0)
             $0.snp.makeConstraints {
                 $0.width.height.equalToSuperview()
