@@ -10,6 +10,10 @@ import UIKit
 class UserInfoView: UIView {
     //MARK: - Properties
     private let infoVstackView: UIStackView = .init()
+    private let infoHstackView: UIStackView = .init()
+    private let infoImageView: UIButton = .init()
+    
+    private let titleLabel: UILabel = .init()
     private let nameLabel: UILabel = .init()
     private let emailLabel: UILabel = .init()
     private let carNameLabel: UILabel = .init()
@@ -27,7 +31,7 @@ class UserInfoView: UIView {
     
     private func setAppearance() {
         
-        self.backgroundColor = UIColor(displayP3Red: 220/255, green: 222/255, blue: 222/255, alpha: 1)
+        self.backgroundColor = UIColor(displayP3Red: 235/255, green: 251/255, blue: 255/255, alpha: 1)
         
         self.infoVstackView.do {
             self.addSubview($0)
@@ -40,48 +44,60 @@ class UserInfoView: UIView {
                 $0.leading.equalToSuperview().offset(30)
                 $0.centerX.equalToSuperview()
                 $0.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(50)
-                $0.bottom.equalToSuperview().offset(-100)
+                $0.bottom.equalToSuperview().offset(-140)
             }
             $0.axis = .vertical
             $0.alignment = .fill
-            $0.distribution = .fill
+            $0.distribution = .fillEqually
+        }
+        self.titleLabel.do {
+            self.infoVstackView.addArrangedSubview($0)
+            $0.snp.makeConstraints {
+                $0.width.equalToSuperview().offset(-30)
+                $0.height.equalTo(30)
+            }
+            $0.text = "내정보"
+            $0.textColor = .black
+            $0.font = .boldSystemFont(ofSize: 30)
+            
         }
         self.nameLabel.do {
             self.infoVstackView.addArrangedSubview($0)
             $0.snp.makeConstraints {
                 $0.width.equalToSuperview().offset(-30)
+                $0.height.equalTo(30)
             }
             $0.text = "\(UserInfo.shared.name ?? "")"
             $0.textColor = .black
             $0.font = .boldSystemFont(ofSize: 20)
         }
-        self.infoVstackView.setCustomSpacing(20, after: self.nameLabel)
         self.emailLabel.do {
             self.infoVstackView.addArrangedSubview($0)
             $0.snp.makeConstraints {
                 $0.width.equalToSuperview().offset(-30)
+                $0.height.equalTo(30)
             }
-            $0.text = "\(UserInfo.shared.email ?? "")"
+            $0.text = "아이디 : " + "\(UserInfo.shared.email ?? "")"
             $0.textColor = .black
             $0.font = .systemFont(ofSize: 15)
         }
-        self.infoVstackView.setCustomSpacing(20, after: self.emailLabel)
         self.carNameLabel.do {
             self.infoVstackView.addArrangedSubview($0)
             $0.snp.makeConstraints {
                 $0.width.equalToSuperview().offset(-30)
+                $0.height.equalTo(30)
             }
-            $0.text = "\(UserInfo.shared.carName ?? "")"
+            $0.text = "차종 : " + "\(UserInfo.shared.carRealName ?? "")"
             $0.textColor = .black
             $0.font = .systemFont(ofSize: 15)
         }
-        self.infoVstackView.setCustomSpacing(20, after: self.carNameLabel)
         self.carNumBerLabel.do {
             self.infoVstackView.addArrangedSubview($0)
             $0.snp.makeConstraints {
                 $0.width.equalToSuperview().offset(-30)
+                $0.height.equalTo(30)
             }
-            $0.text = "\(UserInfo.shared.carNumber ?? "")"
+            $0.text = "차량 번호 : " + "\(UserInfo.shared.carNumber ?? "")"
             $0.textColor = .black
             $0.font = .systemFont(ofSize: 15)
         }
