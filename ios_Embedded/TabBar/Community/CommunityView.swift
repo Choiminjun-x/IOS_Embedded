@@ -26,6 +26,8 @@ class CommunityView: UIView {
     
     func setAppearance() {
         
+        self.backgroundColor = UIColor(displayP3Red: 220/255, green: 222/255, blue: 222/255, alpha: 1)
+
         self.communityListView.do {
             self.addSubview($0)
             $0.snp.makeConstraints {
