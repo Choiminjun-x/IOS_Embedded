@@ -11,11 +11,15 @@ final class UserModel {
     struct User {
         var email: String
         var password: String
+        var name: String?
+        var carName: String?
+        var carRealName: String?
+        var carNumber: String?
     }
     
     var users: [User] = [
-        User(email: "minjun@naver.com", password: "minjun1234"),
-        User(email: "yewon@naver.com", password: "yeah1234")
+        User(email: "minjun@naver.com", password: "1234", name: "최민준", carName: "붕붕쓰", carRealName: "페라리", carNumber: "40가1234" ),
+        User(email: "yewon@naver.com", password: "1234", name: "허예원", carName: "구름이", carRealName: "벤츠", carNumber: "40가5678")
     ]
     
     // 아이디 형식 검사
@@ -27,7 +31,7 @@ final class UserModel {
     
     // 비밀번호 형식 검사
     func isValidPassword(pwd: String) -> Bool {
-        let passwordRegEx = "^[a-zA-Z0-9]{8,}$"
+        let passwordRegEx = "^[0-9]{4,}$"
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegEx)
         return passwordTest.evaluate(with: pwd)
     }

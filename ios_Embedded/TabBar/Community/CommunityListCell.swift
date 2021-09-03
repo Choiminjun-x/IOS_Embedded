@@ -12,8 +12,8 @@ import RxSwift
 struct CommnuityListCellModel {
     var title: String
 }
+
 class CommunityListCell: UITableViewCell {
-    
     //MARK: - Properties
     private let vstackView: UIStackView = .init()
     private let titleLabel: UILabel = .init()
@@ -24,15 +24,14 @@ class CommunityListCell: UITableViewCell {
     }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setAppearance()
+        self.setAppearance()
     }
     
     //MARK: - View
     private func setAppearance() {
         
-        self.backgroundColor = UIColor(displayP3Red: 220/255, green: 222/255, blue: 222/255, alpha: 1)
-
         self.vstackView.do {
+            $0.backgroundColor = UIColor(displayP3Red: 220/255, green: 222/255, blue: 222/255, alpha: 1)
             self.addSubview($0)
             $0.snp.makeConstraints {
                 $0.width.height.equalToSuperview()
@@ -48,7 +47,7 @@ class CommunityListCell: UITableViewCell {
             $0.snp.makeConstraints {
                 $0.width.height.equalToSuperview()
             }
-            $0.textColor = .white
+            $0.textColor = .black
             $0.font = .systemFont(ofSize: 14)
         }
     }
