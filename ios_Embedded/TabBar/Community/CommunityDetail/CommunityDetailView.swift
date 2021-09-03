@@ -18,4 +18,9 @@ class CommunityDetailView: UIView {
         super.init(frame: .zero)
         self.setAppearance()
     }
+    
+    private func setAppearance() {
+        
+        
+    }
 }
