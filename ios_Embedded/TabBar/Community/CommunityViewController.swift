@@ -7,8 +7,11 @@
 
 import UIKit
 
-struct Result {
-    var name: String?
+struct Result: Codable {
+    var title: String?
+    var question: String?
+    var answer: [String]?
+    
 }
 
 class CommunityViewController: UIViewController {
@@ -31,24 +34,23 @@ class CommunityViewController: UIViewController {
 
     //cell에 넣을 모델을 만들어주는 과정 
     func makeCellModels() {
-        socket.sendMessage(socketMessage: "community_init", message: "커뮤니티 초기화")
-        
-        socket.socket.on("community_init") { _, _ in
-            
-        }
+        socket.sendMessage(socketMessage: "community_init", message: "자동차 사고")
         var result = Result()
-        //여기서 커뮤니티 크롤링한거 다 넣어주면 되는거야 예원아
-        result.name = "first community name"
-        results?.append(result)
-        result.name = "second community name"
-        results?.append(result)
-        result.name = "third community name"
-        results?.append(result)
         
+        socket.socket.on("community_init") { jsonObject, ack in
+            do{
+                
+                let getInstanceData = try JSONDecoder().decode(Result.self, from: jsonObject)
+                print(getInstanceData)
+            }catch{
+                print(error)
+            }
+        }
+                
         
         let cellModels: [CommnuityListCellModel] = results?.compactMap {
-            guard let name = $0.name else { return nil }
-            return .init(title: name)
+            guard let title = $0.title else { return nil }
+            return .init(title: title)
         } ?? []
         self.displayCommunityList(cellModels: cellModels)
     }
