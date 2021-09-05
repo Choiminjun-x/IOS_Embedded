@@ -20,7 +20,7 @@ class CommunityViewController: UIViewController {
     
     var socket = SocketIOManager.shared
     
-    private var results: [Result]?
+    private var results: [Result]? = []
     //MARK: - LifeCycle 
     override func loadView() {
         self.view = pageView.self
@@ -28,16 +28,14 @@ class CommunityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.results = []
         self.makeCellModels()
     }
 
-    //cell에 넣을 모델을 만들어주는 과정 
-    func makeCellModels() {
-        socket.sendMessage(socketMessage: "community_init", message: "자동차 사고")
+    func socketManager(_ socketMessage: String, _ message: String){
+        socket.sendMessage(socketMessage: socketMessage, message: message)
         var result = Result()
         
-        socket.socket.on("community_init") { jsonObject, ack in
+        socket.socket.on(socketMessage) { jsonObject, ack in
             for i in jsonObject{
                 do{
                     //utf8로 바꿔서
@@ -59,7 +57,13 @@ class CommunityViewController: UIViewController {
 //                print(error)
 //            }
         }
-                
+    }
+    
+    //cell에 넣을 모델을 만들어주는 과정 
+    func makeCellModels() {
+//        self.socketManager("community_init", "자동차 사고")
+//        self.socketManager("community_init", "범퍼")
+//        self.socketManager("community_init", "와이퍼")
         
         let cellModels: [CommnuityListCellModel] = results?.compactMap {
             guard let title = $0.title else { return nil }
