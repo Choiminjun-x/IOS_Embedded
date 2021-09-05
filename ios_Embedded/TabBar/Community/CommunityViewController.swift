@@ -38,13 +38,26 @@ class CommunityViewController: UIViewController {
         var result = Result()
         
         socket.socket.on("community_init") { jsonObject, ack in
-            do{
-                
-                let getInstanceData = try JSONDecoder().decode(Result.self, from: jsonObject)
-                print(getInstanceData)
-            }catch{
-                print(error)
+            for i in jsonObject{
+                do{
+                    //utf8로 바꿔서
+                    
+                    let r = try? JSONDecoder().decode(Result.self, from: i as! Data)
+                    result.title=r?.title
+                    result.question=r?.question
+                    result.answer=r?.answer
+                    self.results?.append(result)
+                    print(result)
+                }catch{
+                    print(error)
+                }
             }
+//            do{
+//                let getInstanceData = try JSONDecoder().decode(Result.self, from: jsonObject)
+//                print(getInstanceData)
+//            }catch{
+//                print(error)
+//            }
         }
                 
         
