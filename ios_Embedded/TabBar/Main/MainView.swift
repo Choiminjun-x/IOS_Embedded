@@ -296,6 +296,7 @@ class MainView: UIView {
         self.adScrollView.do {
             $0.backgroundColor = UIColor(displayP3Red: 235/255, green: 251/255, blue: 255/255, alpha: 1)
             vstackView.addArrangedSubview($0)
+            $0.layer.shadowOpacity = 0.1
             $0.layer.cornerRadius = 13
             self.settingScroll(.able)
             $0.snp.makeConstraints {
