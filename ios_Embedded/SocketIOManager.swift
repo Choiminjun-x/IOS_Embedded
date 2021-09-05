@@ -28,7 +28,7 @@ class SocketIOManager: NSObject {
     }
     
     func sendMessage(socketMessage: String, message: String) {
-        socket.emit(socketMessage, ["msg" : message])
+        socket.emit(socketMessage, message)
     }
 
 }
