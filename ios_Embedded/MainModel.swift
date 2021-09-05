@@ -15,10 +15,11 @@ final class UserModel {
         var carName: String?
         var carRealName: String?
         var carNumber: String?
+        var carImage: String?
     }
     
     var users: [User] = [
-        User(email: "minjun@naver.com", password: "1234", name: "최민준", carName: "붕붕쓰", carRealName: "페라리", carNumber: "40가1234" ),
+        User(email: "minjun@naver.com", password: "1234", name: "최민준", carName: "붕붕쓰", carRealName: "맥라렌", carNumber: "40가1234", carImage: "mclarenImage" ),
         User(email: "yewon@naver.com", password: "1234", name: "허예원", carName: "구름이", carRealName: "벤츠", carNumber: "40가5678")
     ]
     

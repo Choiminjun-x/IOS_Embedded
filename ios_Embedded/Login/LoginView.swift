@@ -20,6 +20,7 @@ class UserInfo {
     var carName: String?
     var carRealName: String?
     var carNumber: String?
+    var carImage: String?
     private init() {}
 }
 
@@ -153,8 +154,8 @@ class LoginView: UIView {
                 self.userInfo.carName = "붕붕쓰"
                 self.userInfo.carNumber = "40가 1234"
                 self.userInfo.name = "최민준"
-                self.userInfo.carRealName = "페라리"
-                
+                self.userInfo.carRealName = "맥라렌"
+                self.userInfo.carImage = "mclarenImage"
                 self.loginBtnClickEvent.accept(())
             }.disposed(by: disposeBag) //메모리 해제
         }
@@ -171,6 +172,7 @@ class LoginView: UIView {
                 userInfo.carNumber = user.carNumber
                 userInfo.name = user.name
                 userInfo.carRealName = user.carRealName
+                userInfo.carImage = user.carImage
                 return true // 로그인 성공
             }
         }
