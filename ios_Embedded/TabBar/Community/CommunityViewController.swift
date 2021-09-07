@@ -44,7 +44,7 @@ class CommunityViewController: UIViewController {
         result.title="third cell"
         results?.append(result)
         
-        
+
         socket.socket.on(socketMessage) {jsonObject, ack in
             
             for i in jsonObject{

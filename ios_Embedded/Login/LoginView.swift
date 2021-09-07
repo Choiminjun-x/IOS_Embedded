@@ -45,6 +45,8 @@ class LoginView: UIView {
     var userModel = UserModel()
     var userInfo = UserInfo.shared
     
+    open var leftViewMode: UITextField.ViewMode
+    
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -65,7 +67,7 @@ class LoginView: UIView {
                 $0.centerX.equalToSuperview()
                 $0.height.equalTo(50)
                 $0.width.equalTo(self.logoImageView.snp.height).multipliedBy(2.511)
-                $0.top.equalToSuperview().offset(130)
+                $0.top.equalToSuperview().offset(150)
             }
             $0.image = UIImage(named: "LoginLogoImage")
         }
@@ -76,7 +78,7 @@ class LoginView: UIView {
                 $0.centerX.equalToSuperview()
                 $0.width.equalToSuperview().offset(-100)
                 $0.height.equalTo(50)
-                $0.top.equalTo(self.logoImageView.snp.bottom).offset(75)
+                $0.top.equalTo(self.logoImageView.snp.bottom).offset(80)
             }
             $0.text = "Login to your Account"
             $0.textAlignment = .left
@@ -86,7 +88,7 @@ class LoginView: UIView {
             self.addSubview($0)
             $0.placeholder = "id"
             $0.textColor = .black
-            $0.textAlignment = .center
+            
             $0.layer.borderWidth = 3
             $0.layer.cornerRadius = 15
             $0.layer.borderColor = .init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
@@ -123,7 +125,7 @@ class LoginView: UIView {
             $0.backgroundColor = .white
             $0.layer.cornerRadius = 15
             $0.snp.makeConstraints{
-                $0.top.equalTo(passwdTextField.snp.bottom).offset(15)
+                $0.top.equalTo(passwdTextField.snp.bottom).offset(25)
                 $0.height.equalTo(40)
                 $0.width.equalToSuperview().offset(-100)
                 $0.centerX.equalToSuperview()
@@ -142,6 +144,7 @@ class LoginView: UIView {
             $0.backgroundColor = .white
             $0.setTitle("테스트 버튼", for: .normal)
             $0.setTitleColor(.black, for: .normal)
+            $0.layer.cornerRadius = 15
             $0.snp.makeConstraints {
                 $0.top.equalTo(loginBtn.snp.bottom).offset(15)
                 $0.height.equalTo(40)
