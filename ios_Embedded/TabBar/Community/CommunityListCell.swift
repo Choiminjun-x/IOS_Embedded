@@ -33,7 +33,8 @@ class CommunityListCell: UITableViewCell {
     private func setAppearance() {
         
         self.vstackView.do {
-            self.backgroundColor = UIColor(displayP3Red: 235/255, green: 251/255, blue: 255/255, alpha: 1)
+            self.backgroundColor = .white
+            //self.backgroundColor = UIColor(displayP3Red: 235/255, green: 251/255, blue: 255/255, alpha: 1)
             self.addSubview($0)
             $0.snp.makeConstraints {
                 $0.width.height.equalToSuperview()
@@ -48,6 +49,7 @@ class CommunityListCell: UITableViewCell {
             vstackView.addArrangedSubview($0)
             $0.snp.makeConstraints {
                 $0.width.height.equalToSuperview()
+                $0.leading.equalToSuperview().offset(20)
             }
             $0.textColor = .black
             $0.font = .systemFont(ofSize: 14)

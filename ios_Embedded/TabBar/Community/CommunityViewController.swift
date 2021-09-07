@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 struct Result: Codable {
     var title: String?
     var question: String?
     var answer: [String]?
-    
 }
 
 class CommunityViewController: UIViewController {
@@ -23,6 +24,9 @@ class CommunityViewController: UIViewController {
     var dic: Dictionary<String,Any> = [:]
     
     private var results: [Result]? = []
+    
+    private let disposeBag: DisposeBag = .init()
+    
     //MARK: - LifeCycle 
     override func loadView() {
         self.view = pageView.self
@@ -31,22 +35,13 @@ class CommunityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.makeCellModels()
+        self.pageChange()
     }
-
+    
+    //MARK: - Socket 통신
     func socketManager(_ socketMessage: String, _ message: String){
         socket.sendMessage(socketMessage: socketMessage, message: message)
-        var result = Result()
-        
-        result.title="first cell"
-        results?.append(result)
-        result.title="second cell"
-        results?.append(result)
-        result.title="third cell"
-        results?.append(result)
-        
-        
         socket.socket.on(socketMessage) {jsonObject, ack in
-            
             for i in jsonObject{
                 if let array = i as? NSMutableArray{
                     for a in array{
@@ -60,18 +55,12 @@ class CommunityViewController: UIViewController {
                         }
                     }
                 }
-
             }
-
         }
     }
     
-    //cell에 넣을 모델을 만들어주는 과정 
+    //MARK: - Make Cell 
     func makeCellModels() {
-        self.socketManager("community_init", "자동차 사고")
-//        self.socketManager("community_init", "범퍼")
-//        self.socketManager("community_init", "와이퍼")
-        
         let cellModels: [CommnuityListCellModel] = results?.compactMap {
             guard let title = $0.title else { return nil }
             return .init(title: title)
@@ -81,6 +70,15 @@ class CommunityViewController: UIViewController {
     
     func displayCommunityList(cellModels: [CommnuityListCellModel]) {
         self.pageView.displayTableView(cellModels: cellModels)
-        
+    }
+    
+    //MARK: - Page Change
+    func pageChange() {
+        self.pageView.communityCellTapEvent
+            .subscribe(onNext: { index in
+                //배열 정보를 넘겨야 함 
+              let page = CommunityDetailViewController()
+                self.navigationController?.pushViewController(page, animated: true)
+            }).disposed(by: disposeBag)
     }
 }
