@@ -20,6 +20,8 @@ class CommunityViewController: UIViewController {
     
     var socket = SocketIOManager.shared
     
+    var dic: Dictionary<String,Any> = [:]
+    
     private var results: [Result]? = []
     //MARK: - LifeCycle 
     override func loadView() {
@@ -35,33 +37,38 @@ class CommunityViewController: UIViewController {
         socket.sendMessage(socketMessage: socketMessage, message: message)
         var result = Result()
         
-        socket.socket.on(socketMessage) { jsonObject, ack in
+        result.title="first cell"
+        results?.append(result)
+        result.title="second cell"
+        results?.append(result)
+        result.title="third cell"
+        results?.append(result)
+        
+        
+        socket.socket.on(socketMessage) {jsonObject, ack in
+            
             for i in jsonObject{
-                do{
-                    //utf8로 바꿔서
-                    
-                    let r = try? JSONDecoder().decode(Result.self, from: i as! Data)
-                    result.title=r?.title
-                    result.question=r?.question
-                    result.answer=r?.answer
-                    self.results?.append(result)
-                    print(result)
-                }catch{
-                    print(error)
+                if let array = i as? NSMutableArray{
+                    for a in array{
+                        do{
+                            let data = try JSONSerialization.data(withJSONObject: a, options: .prettyPrinted)
+                            let r = try JSONDecoder().decode(Result.self, from: data)
+                            
+                            self.results?.append(r)
+                        }catch{
+                            print(error.localizedDescription)
+                        }
+                    }
                 }
+
             }
-//            do{
-//                let getInstanceData = try JSONDecoder().decode(Result.self, from: jsonObject)
-//                print(getInstanceData)
-//            }catch{
-//                print(error)
-//            }
+
         }
     }
     
     //cell에 넣을 모델을 만들어주는 과정 
     func makeCellModels() {
-//        self.socketManager("community_init", "자동차 사고")
+        self.socketManager("community_init", "자동차 사고")
 //        self.socketManager("community_init", "범퍼")
 //        self.socketManager("community_init", "와이퍼")
         
