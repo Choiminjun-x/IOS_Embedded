@@ -10,16 +10,15 @@ import UIKit
 class CommunityDetailViewController: UIViewController {
     
     //MARK: - Properties
-    private let pageView: CommunityView = .init()
+    private let pageView: CommunityDetailView = .init()
     
     //MARK: - LifeCycle
     override func loadView() {
         self.view = pageView.self
-        //민준
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //github test sibal
     }
 }
