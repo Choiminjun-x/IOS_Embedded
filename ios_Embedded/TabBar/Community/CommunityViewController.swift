@@ -41,6 +41,7 @@ class CommunityViewController: UIViewController {
     //MARK: - Socket 통신
     func socketManager(_ socketMessage: String, _ message: String){
         socket.sendMessage(socketMessage: socketMessage, message: message)
+
         socket.socket.on(socketMessage) {jsonObject, ack in
             for i in jsonObject{
                 if let array = i as? NSMutableArray{
