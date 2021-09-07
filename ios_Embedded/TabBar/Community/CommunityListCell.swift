@@ -10,7 +10,9 @@ import SnapKit
 import RxSwift
 
 struct CommnuityListCellModel {
-    var title: String
+    var title: String?
+    var question: String?
+    var answer: [String]?
 }
 
 class CommunityListCell: UITableViewCell {
