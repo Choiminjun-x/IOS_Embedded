@@ -20,6 +20,7 @@ class CommunityView: UIView {
             self.CommunityListViewDelegate.cellTapEvent
         }
     }
+    
     //MARK: - LifeCycle 
     required init?(coder: NSCoder) {
         fatalError()
@@ -45,6 +46,7 @@ class CommunityView: UIView {
             $0.dataSource = self.CommunityListViewDelegate
             $0.register(CommunityListCell.self, forCellReuseIdentifier: "CommunityListCell")
         }
+        
     }
     
     func displayTableView(cellModels: [CommnuityListCellModel]) {
@@ -53,6 +55,7 @@ class CommunityView: UIView {
         }()
         self.communityListView.reloadData()
     }
+    
 }
 
 //MARK: - TableView Delegate
@@ -62,6 +65,7 @@ fileprivate class CommunityListViewDelegate: NSObject, UITableViewDelegate, UITa
     let cellTapEvent: PublishRelay<Int> = .init()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return cellModels?.count ?? 0
     }
     
@@ -79,6 +83,7 @@ fileprivate class CommunityListViewDelegate: NSObject, UITableViewDelegate, UITa
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
+    
 }
 
 
