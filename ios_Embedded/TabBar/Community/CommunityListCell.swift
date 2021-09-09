@@ -19,6 +19,7 @@ class CommunityListCell: UITableViewCell {
     //MARK: - Properties
     private let vstackView: UIStackView = .init()
     private let titleLabel: UILabel = .init()
+    private let answerLabel: UILabel = .init()
     
     // Object LifeCycle
     required init?(coder: NSCoder) {
@@ -40,7 +41,7 @@ class CommunityListCell: UITableViewCell {
                 $0.width.height.equalToSuperview()
                 $0.centerX.equalToSuperview()
             }
-            $0.axis = .horizontal
+            $0.axis = .vertical
             $0.alignment = .fill
             $0.distribution = .fill
         }
@@ -48,15 +49,23 @@ class CommunityListCell: UITableViewCell {
         self.titleLabel.do {
             vstackView.addArrangedSubview($0)
             $0.snp.makeConstraints {
-                $0.width.height.equalToSuperview()
                 $0.leading.equalToSuperview().offset(20)
             }
+            $0.numberOfLines = 0
             $0.textColor = .black
             $0.font = .systemFont(ofSize: 14)
+        }
+        
+        self.answerLabel.do {
+            vstackView.addArrangedSubview($0)
+            $0.textColor = .gray
+            $0.numberOfLines = 0
+            $0.font = .systemFont(ofSize: 13)
         }
     }
     
     func displayCellModel(_ model: CommnuityListCellModel) {
         self.titleLabel.text = model.title
+        self.answerLabel.text = model.answer![0]
     }
 }

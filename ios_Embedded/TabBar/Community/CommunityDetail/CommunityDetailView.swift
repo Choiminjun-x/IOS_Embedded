@@ -7,16 +7,13 @@
 
 import UIKit
 
-struct CommunityDetailModel {
-    var question: String?
-    var answer: String?
-}
-
 class CommunityDetailView: UIView {
     
+    //MARK: - Properties
     private let vscrollView: UIScrollView = .init()
     private let contentView: UIView = .init()
     private let vstackView: UIStackView = .init()
+    private let titleLabel: UILabel = .init()
     private let questionLabel: UILabel = .init()
     private let answerLabel: UILabel = .init()
     
@@ -30,9 +27,6 @@ class CommunityDetailView: UIView {
         self.setAppearance()
     }
     
-    private func displayDetail() {
-        
-    }
     //MARK: - View Method
     private func setAppearance() {
         
@@ -63,24 +57,39 @@ class CommunityDetailView: UIView {
         self.vstackView.do {
             contentView.addSubview($0)
             $0.snp.makeConstraints {
-                $0.width.equalToSuperview().offset(-60)
+                $0.width.equalToSuperview().offset(-20)
                 $0.height.top.bottom.equalToSuperview()
                 $0.centerX.equalToSuperview()
-                $0.trailing.equalToSuperview().offset(-30)
-                $0.leading.equalToSuperview().offset(30)
+                $0.leading.equalToSuperview().offset(10)
+                $0.trailing.equalToSuperview().offset(-10)
             }
             $0.axis = .vertical
             $0.alignment = .fill
             $0.distribution = .fill
         }
         
+        self.titleLabel.do {
+            self.vstackView.addArrangedSubview($0)
+            $0.numberOfLines = 0
+        }
+        self.vstackView.setCustomSpacing(30, after: self.titleLabel)
+        
         self.questionLabel.do {
             self.vstackView.addArrangedSubview($0)
-            $0.text = "질문: "
+            $0.numberOfLines = 0
         }
+        self.vstackView.setCustomSpacing(30, after: self.questionLabel)
+        
         self.answerLabel.do {
             self.vstackView.addArrangedSubview($0)
-            $0.text = "대답: "
+            $0.numberOfLines = 0
         }
+    }
+    
+    //MARK: - displayDetailView
+    func displayCellModel(_ model: [Result], index: Int) {
+        self.titleLabel.text = "타이틀: \(model[index].title ?? "") "
+        self.questionLabel.text = "질문: \(model[index].question ?? "")"
+        self.answerLabel.text = "대답: \(model[index].answer ?? [])"
     }
 }

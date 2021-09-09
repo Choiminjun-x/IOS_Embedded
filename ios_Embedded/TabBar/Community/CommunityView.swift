@@ -84,6 +84,7 @@ fileprivate class CommunityListViewDelegate: NSObject, UITableViewDelegate, UITa
         return 70
     }
     
+
 }
 
 
