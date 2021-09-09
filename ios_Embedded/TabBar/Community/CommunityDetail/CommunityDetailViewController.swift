@@ -21,4 +21,8 @@ class CommunityDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    func requestCommunityDetail(searchResults: [Result], index: Int ) {
+        self.pageView.displayCellModel(searchResults, index: index)
+    }
 }

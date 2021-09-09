@@ -76,9 +76,9 @@ fileprivate class CommunityListViewDelegate: NSObject, UITableViewDelegate, UITa
         return cellTapEvent.accept(indexPath.row)
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 70
+//    }
 }
 
 
