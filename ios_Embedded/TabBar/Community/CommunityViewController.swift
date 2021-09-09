@@ -23,7 +23,7 @@ class CommunityViewController: UIViewController {
     
     var dic: Dictionary<String,Any> = [:]
     
-    private var results: [Result]? = []
+    internal var searchResults: [Result]? = []
     
     private let disposeBag: DisposeBag = .init()
     
@@ -41,7 +41,6 @@ class CommunityViewController: UIViewController {
     //MARK: - Socket 통신
     func socketManager(_ socketMessage: String, _ message: String){
         socket.sendMessage(socketMessage: socketMessage, message: message)
-
         socket.socket.on(socketMessage) {jsonObject, ack in
             for i in jsonObject{
                 if let array = i as? NSMutableArray{
@@ -49,8 +48,7 @@ class CommunityViewController: UIViewController {
                         do{
                             let data = try JSONSerialization.data(withJSONObject: a, options: .prettyPrinted)
                             let r = try JSONDecoder().decode(Result.self, from: data)
-                            
-                            self.results?.append(r)
+                            self.searchResults?.append(r)
                         }catch{
                             print(error.localizedDescription)
                         }
@@ -62,9 +60,11 @@ class CommunityViewController: UIViewController {
     
     //MARK: - Make Cell 
     func makeCellModels() {
-        let cellModels: [CommnuityListCellModel] = results?.compactMap {
+        let cellModels: [CommnuityListCellModel] = searchResults?.compactMap {
             guard let title = $0.title else { return nil }
-            return .init(title: title)
+            guard let answer = $0.answer else { return nil }
+            return .init(title: title,
+                         answer: answer)
         } ?? []
         self.displayCommunityList(cellModels: cellModels)
     }
@@ -77,9 +77,10 @@ class CommunityViewController: UIViewController {
     func pageChange() {
         self.pageView.communityCellTapEvent
             .subscribe(onNext: { index in
-                //배열 정보를 넘겨야 함 
+                //배열 정보를 넘겨야 함
               let page = CommunityDetailViewController()
                 self.navigationController?.pushViewController(page, animated: true)
+                page.requestCommunityDetail(searchResults: self.searchResults!, index: index)
             }).disposed(by: disposeBag)
     }
 }

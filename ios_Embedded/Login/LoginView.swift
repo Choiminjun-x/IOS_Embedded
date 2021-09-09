@@ -45,8 +45,6 @@ class LoginView: UIView {
     var userModel = UserModel()
     var userInfo = UserInfo.shared
     
-    open var leftViewMode: UITextField.ViewMode
-    
     required init?(coder: NSCoder) {
         fatalError()
     }
