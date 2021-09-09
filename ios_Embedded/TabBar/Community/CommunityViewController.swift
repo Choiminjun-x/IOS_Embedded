@@ -15,24 +15,25 @@ struct Result: Codable {
     var answer: [String]?
 }
 
-class CommunityViewController: UIViewController{
+class CommunityViewController: UIViewController {
     
     //MARK: - Properties
     private let pageView: CommunityView = .init()
     
     var socket = SocketIOManager.shared
-    
 
-    private var results: [Result]? = []
-
-    var dic: Dictionary<String,Any> = [:]
-    
+    //검색 결과 전체 배열
     internal var searchResults: [Result]? = []
+    
+    internal var carAccidentResults: [Result]? = []
+    internal var bumperResults: [Result]? = []
+    internal var wiperResults: [Result]? = []
+    internal var mirrorResults: [Result]? = []
 
+    let searchController = UISearchController(searchResultsController: nil)
     
     private let disposeBag: DisposeBag = .init()
     
-    let searchController = SearchController()
     private var filteredResults = [Result]()
     
     //MARK: - LifeCycle 
@@ -44,18 +45,7 @@ class CommunityViewController: UIViewController{
         super.viewDidLoad()
         self.makeCellModels()
         self.pageChange()
-        self.searchConf()
-        
-    }
-    
-    //MARK: - searchConf
-    func searchConf(){
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "검색"
-        searchController.searchBar.autocapitalizationType = .none
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
+        self.searchBarConf()
     }
     
     //MARK: - Socket 통신
@@ -68,7 +58,21 @@ class CommunityViewController: UIViewController{
                         do{
                             let data = try JSONSerialization.data(withJSONObject: a, options: .prettyPrinted)
                             let r = try JSONDecoder().decode(Result.self, from: data)
+                            //배열에 넣기
                             self.searchResults?.append(r)
+                            if message == "자동차 사고" {
+                                self.carAccidentResults?.append(r)
+                            }
+                            else if message == "범퍼" {
+                                self.bumperResults?.append(r)
+                            }
+                            else if message == "와이퍼" {
+                                self.wiperResults?.append(r)
+                            }
+                            else if message == "미러" {
+                                self.mirrorResults?.append(r)
+                            }
+                            
                         }catch{
                             print(error.localizedDescription)
                         }
@@ -104,40 +108,30 @@ class CommunityViewController: UIViewController{
             }).disposed(by: disposeBag)
     }
     
-    //MARK - searchBar..
+    //MARK: - searchConf
+    func searchBarConf(){
+        self.navigationItem.searchController = searchController
+        self.navigationItem.title = "커뮤니티"
+        self.navigationItem.hidesSearchBarWhenScrolling = true
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = true
+        searchController.searchBar.placeholder = "검색"
+//        searchController.searchBar.autocapitalizationType = .none
+//        definesPresentationContext = true
+        
+       
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        //ScopeBar
+        searchController.searchBar.scopeButtonTitles = [ "자동차 사고", "범퍼", "와이퍼", "미러" ]
+        searchController.searchBar.showsScopeBar = true
+    }
+    
+    //MARK: - searchBar..
     func searchBarIsEmpty() -> Bool {
       // Returns true if the text is empty or nil
       return searchController.searchBar.text?.isEmpty ?? true
-    }
-    
-    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        //여기서 소켓으로 보냈다가 받아야 함
-        socket.sendMessage(socketMessage: "search_text", message: searchText)
-        
-        socket.socket.on("search_text"){jsonObject, ack in
-            for i in jsonObject{
-                if let array = i as? NSMutableArray{
-                    for a in array{
-                        do{
-                            let data = try JSONSerialization.data(withJSONObject: a, options: .prettyPrinted)
-                            let r = try JSONDecoder().decode(Result.self, from: data)
-                            
-                            self.filteredResults.append(r)
-                        }catch{
-                            print(error.localizedDescription)
-                        }
-                    }
-                }
-            }
-        }
-        
-        //데이터 리로드 해주기...
-        //tableView.reloadData()
-        let cellModels: [CommnuityListCellModel] = filteredResults.compactMap {
-            guard let title = $0.title else { return nil }
-            return .init(title: title)
-        }
-       self.displayCommunityList(cellModels: cellModels)
     }
 
     func isFiltering() -> Bool {
@@ -149,7 +143,6 @@ class CommunityViewController: UIViewController{
 extension CommunityViewController: UISearchResultsUpdating{
 
     func updateSearchResults(for searchController: UISearchController) {
-        filterContentForSearchText(searchController.searchBar.text!)
-      }
-
+        
+    }
 }
