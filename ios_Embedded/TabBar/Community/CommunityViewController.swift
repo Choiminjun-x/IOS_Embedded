@@ -21,8 +21,16 @@ class CommunityViewController: UIViewController {
     private let pageView: CommunityView = .init()
     
     var socket = SocketIOManager.shared
-    
+
+
+    //검색 결과 전체 배열
+
     internal var searchResults: [Result]? = []
+    
+    internal var carAccidentResults: [Result]? = []
+    internal var bumperResults: [Result]? = []
+    internal var wiperResults: [Result]? = []
+    internal var mirrorResults: [Result]? = []
 
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -52,7 +60,21 @@ class CommunityViewController: UIViewController {
                         do{
                             let data = try JSONSerialization.data(withJSONObject: a, options: .prettyPrinted)
                             let r = try JSONDecoder().decode(Result.self, from: data)
+                            //배열에 넣기
                             self.searchResults?.append(r)
+                            if message == "자동차 사고" {
+                                self.carAccidentResults?.append(r)
+                            }
+                            else if message == "범퍼" {
+                                self.bumperResults?.append(r)
+                            }
+                            else if message == "와이퍼" {
+                                self.wiperResults?.append(r)
+                            }
+                            else if message == "미러" {
+                                self.mirrorResults?.append(r)
+                            }
+                            
                         }catch{
                             print(error.localizedDescription)
                         }
@@ -90,15 +112,24 @@ class CommunityViewController: UIViewController {
     
     //MARK: - searchConf
     func searchBarConf(){
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = true
-        searchController.searchBar.placeholder = "검색"
-        searchController.searchBar.autocapitalizationType = .none
-        definesPresentationContext = true
-        
+
         self.navigationItem.searchController = searchController
         self.navigationItem.title = "커뮤니티"
         self.navigationItem.hidesSearchBarWhenScrolling = true
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = true
+        searchController.searchBar.placeholder = "검색"
+//        searchController.searchBar.autocapitalizationType = .none
+//        definesPresentationContext = true
+        
+       
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+        //ScopeBar
+        searchController.searchBar.scopeButtonTitles = [ "자동차 사고", "범퍼", "와이퍼", "미러" ]
+        searchController.searchBar.showsScopeBar = true
+
     }
     
     //MARK: - searchBar..

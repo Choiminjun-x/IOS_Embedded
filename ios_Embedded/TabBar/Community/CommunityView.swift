@@ -46,7 +46,6 @@ class CommunityView: UIView {
             $0.dataSource = self.CommunityListViewDelegate
             $0.register(CommunityListCell.self, forCellReuseIdentifier: "CommunityListCell")
         }
-        
     }
     
     func displayTableView(cellModels: [CommnuityListCellModel]) {
@@ -55,7 +54,6 @@ class CommunityView: UIView {
         }()
         self.communityListView.reloadData()
     }
-    
 }
 
 //MARK: - TableView Delegate
@@ -79,12 +77,6 @@ fileprivate class CommunityListViewDelegate: NSObject, UITableViewDelegate, UITa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         return cellTapEvent.accept(indexPath.row)
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
-    }
-    
-
 }
 
 
