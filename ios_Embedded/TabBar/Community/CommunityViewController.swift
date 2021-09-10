@@ -22,7 +22,9 @@ class CommunityViewController: UIViewController {
     
     var socket = SocketIOManager.shared
 
+
     //검색 결과 전체 배열
+
     internal var searchResults: [Result]? = []
     
     internal var carAccidentResults: [Result]? = []
@@ -36,7 +38,7 @@ class CommunityViewController: UIViewController {
     
     private var filteredResults = [Result]()
     
-    //MARK: - LifeCycle 
+    //MARK: - LifeCycle
     override func loadView() {
         self.view = pageView.self
     }
@@ -82,7 +84,7 @@ class CommunityViewController: UIViewController {
         }
     }
     
-    //MARK: - Make Cell 
+    //MARK: - Make Cell
     func makeCellModels() {
         let cellModels: [CommnuityListCellModel] = searchResults?.compactMap {
             guard let title = $0.title else { return nil }
@@ -110,6 +112,7 @@ class CommunityViewController: UIViewController {
     
     //MARK: - searchConf
     func searchBarConf(){
+
         self.navigationItem.searchController = searchController
         self.navigationItem.title = "커뮤니티"
         self.navigationItem.hidesSearchBarWhenScrolling = true
@@ -126,6 +129,7 @@ class CommunityViewController: UIViewController {
         //ScopeBar
         searchController.searchBar.scopeButtonTitles = [ "자동차 사고", "범퍼", "와이퍼", "미러" ]
         searchController.searchBar.showsScopeBar = true
+
     }
     
     //MARK: - searchBar..
