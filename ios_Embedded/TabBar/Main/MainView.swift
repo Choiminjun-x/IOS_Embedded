@@ -346,7 +346,7 @@ class MainView: UIView {
                 $0.width.equalTo(self.adImageView1.snp.height).multipliedBy(0.666)
                 $0.height.equalToSuperview()
             }
-            $0.image = UIImage(named: "sample0")
+            $0.image = UIImage(named: "AD1")
         }
         self.adImageView2.do {
             adStackView.addArrangedSubview($0)
@@ -354,7 +354,7 @@ class MainView: UIView {
                 $0.width.equalTo(self.adImageView2.snp.height).multipliedBy(0.666)
                 $0.height.equalToSuperview()
             }
-            $0.image = UIImage(named: "sample1")
+            $0.image = UIImage(named: "AD2")
         }
         self.adImageView3.do {
             adStackView.addArrangedSubview($0)
@@ -362,7 +362,7 @@ class MainView: UIView {
                 $0.width.equalTo(self.adImageView3.snp.height).multipliedBy(0.666)
                 $0.height.equalToSuperview()
             }
-            $0.image = UIImage(named: "sample2")
+            $0.image = UIImage(named: "AD3")
         }
     }
 }

@@ -25,6 +25,7 @@ class CommunityListCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError()
     }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setAppearance()
