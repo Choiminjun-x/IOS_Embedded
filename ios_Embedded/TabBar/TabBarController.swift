@@ -17,9 +17,9 @@ class TabBarController: UITabBarController {
         let vc2 = CommunityViewController()
         
         vc2.socketManager("community_init", "자동차 사고")
-        vc2.socketManager("community_init", "범퍼")
-        vc2.socketManager("community_init", "와이퍼")
-        vc2.socketManager("community_init", "미러")
+//        vc2.socketManager("community_init", "범퍼")
+//        vc2.socketManager("community_init", "와이퍼")
+//        vc2.socketManager("community_init", "미러")
         
         vc1.title = "메인"
         vc1.tabBarItem.image = UIImage(systemName: "house")

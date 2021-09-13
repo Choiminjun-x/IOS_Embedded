@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class CommunityDetailView: UIView {
     
@@ -14,9 +16,7 @@ class CommunityDetailView: UIView {
     private let contentView: UIView = .init()
     private let vstackView: UIStackView = .init()
     private let vstackView2: UIStackView = .init()
-    private let vstackView3: UIStackView = .init()
     private let vstackView4: UIStackView = .init()
-    private let userImageView: UIImageView = .init()
     private let titleLabel: UILabel = .init()
     private let questionLabel: UILabel = .init()
     private let answerLabel: UILabel = .init()
@@ -47,7 +47,7 @@ class CommunityDetailView: UIView {
             self.addSubview($0)
             self.vscrollView.alwaysBounceVertical = true
             $0.snp.makeConstraints {
-                $0.top.equalTo(safeAreaLayoutGuide.snp.top).offset(30)
+                $0.top.equalTo(safeAreaLayoutGuide.snp.top).offset(5)
                 $0.bottom.equalTo(safeAreaLayoutGuide.snp.bottom)
                 $0.leading.equalTo(safeAreaLayoutGuide.snp.leading)
                 $0.trailing.equalTo(safeAreaLayoutGuide.snp.trailing)
@@ -79,37 +79,16 @@ class CommunityDetailView: UIView {
             $0.axis = .vertical
             $0.alignment = .fill
             $0.distribution = .fill
-            $0.layer.borderColor = CGColor(red: 000/255, green: 153/255, blue: 255/255, alpha: 1);            $0.layer.borderWidth = 1
-            $0.layer.cornerRadius = 10
-        }
-        
-        //카스 로고랑 커뮤니티 제목
-        self.vstackView3.do {
-            self.vstackView.addArrangedSubview($0)
-            $0.snp.makeConstraints {
-                $0.width.equalToSuperview().offset(-10)
-                $0.height.equalTo(30)
-            }
-            $0.axis = .horizontal
-            $0.alignment = .fill
-            $0.distribution = .fill
         }
         
         self.logoImageView.do{
-            self.vstackView3.addArrangedSubview($0)
-            $0.image = UIImage(named: "AppIcon")
+            self.contentView.addSubview($0)
+            $0.image = UIImage(named: "AppIconLogo")
             $0.snp.makeConstraints{
-                $0.leading.equalToSuperview().offset(125)
-                $0.height.equalTo(30)
-                $0.width.equalTo(50)
-            }
-        }
-        
-        self.logotextLabel.do{
-            self.vstackView3.addArrangedSubview($0)
-            $0.text = "커뮤니티"
-            $0.snp.makeConstraints{
-                $0.width.equalTo(50)
+                $0.centerX.equalToSuperview()
+                $0.top.equalToSuperview().offset(10)
+                $0.height.equalTo(80)
+                $0.width.equalTo(80)
             }
         }
         
@@ -117,42 +96,32 @@ class CommunityDetailView: UIView {
         self.vstackView2.do {
             self.vstackView.addArrangedSubview($0)
             $0.snp.makeConstraints {
-                $0.width.equalToSuperview()
+                $0.width.equalToSuperview().offset(-20)
                 $0.height.equalTo(80)
                 $0.top.equalTo(80)
+                $0.leading.equalToSuperview().offset(10)
+                $0.trailing.equalToSuperview().offset(-10)
             }
             $0.axis = .horizontal
             $0.alignment = .fill
             $0.distribution = .fill
         }
         
-        self.userImageView.do{
+        self.titleLabel.do {
             self.vstackView2.addArrangedSubview($0)
-            $0.image = UIImage(named: "question")
-            $0.snp.makeConstraints{
-                $0.width.equalTo(50)
-                $0.height.equalTo(40)
-                
+            $0.font = UIFont(name:"HelveticaNeue-Bold", size: 23.0)
+            $0.numberOfLines = 0
+            $0.snp.makeConstraints {
+                $0.centerX.equalToSuperview()
             }
         }
         
-        self.vstackView2.setCustomSpacing(10, after: userImageView)
-        
-        self.titleLabel.do {
-            self.vstackView2.addArrangedSubview($0)
-            $0.font = UIFont(name:"HelveticaNeue-Bold", size: 16.0)
-            $0.numberOfLines = 0
-        }
-        
         self.vstackView.setCustomSpacing(10, after: vstackView2)
-        
-        self.quetionLineLabel.do{
-            self.vstackView.addArrangedSubview($0)
-            $0.text = "<질문>"
-        }
+    
         self.questionLabel.do {
             self.vstackView.addArrangedSubview($0)
             $0.numberOfLines = 0
+            $0.font = .systemFont(ofSize: 15)
             
         }
         self.vstackView.setCustomSpacing(10, after: self.questionLabel)
@@ -210,6 +179,6 @@ class CommunityDetailView: UIView {
         self.titleLabel.text = "\(model[index].title ?? "") "
         self.questionLabel.text = "\(model[index].question ?? "")"
         self.answerLabel.text = "\(model[index].answer ?? [])"
-        self.pageLabel.text = "-"+String(index)+"번째 글-"
+        self.pageLabel.text = "-"+String(index+1)+"번째 글-"
     }
 }
