@@ -17,7 +17,10 @@ struct CommnuityListCellModel {
 
 class CommunityListCell: UITableViewCell {
     //MARK: - Properties
+    private let view: UIView = .init()
     private let vstackView: UIStackView = .init()
+    private let vstackView2: UIStackView = .init()
+    private let dotLabel: UILabel = .init()
     private let titleLabel: UILabel = .init()
     private let answerLabel: UILabel = .init()
     
@@ -35,8 +38,7 @@ class CommunityListCell: UITableViewCell {
     private func setAppearance() {
         
         self.vstackView.do {
-            self.backgroundColor = .white
-            //self.backgroundColor = UIColor(displayP3Red: 235/255, green: 251/255, blue: 255/255, alpha: 1)
+            self.backgroundColor = UIColor(displayP3Red: 235/255, green: 251/255, blue: 255/255, alpha: 1)
             self.addSubview($0)
             $0.snp.makeConstraints {
                 $0.width.height.equalToSuperview()
@@ -44,13 +46,24 @@ class CommunityListCell: UITableViewCell {
             }
             $0.axis = .vertical
             $0.alignment = .fill
+            $0.distribution = .fillEqually
+        }
+        
+        self.vstackView2.do {
+            self.vstackView.addArrangedSubview($0)
+            $0.axis = .horizontal
+            $0.alignment = .fill
             $0.distribution = .fill
         }
         
+        self.dotLabel.do {
+            self.vstackView2.addArrangedSubview($0)
+            $0.text = "-"
+        }
         self.titleLabel.do {
-            vstackView.addArrangedSubview($0)
+            vstackView2.addArrangedSubview($0)
             $0.snp.makeConstraints {
-                $0.leading.equalToSuperview().offset(20)
+                $0.leading.equalToSuperview().offset(15)
             }
             $0.numberOfLines = 0
             $0.textColor = .black
@@ -59,8 +72,11 @@ class CommunityListCell: UITableViewCell {
         
         self.answerLabel.do {
             vstackView.addArrangedSubview($0)
+            $0.snp.makeConstraints {
+                $0.leading.equalToSuperview().offset(10)
+            }
             $0.textColor = .gray
-            $0.numberOfLines = 0
+            $0.numberOfLines = 3
             $0.font = .systemFont(ofSize: 13)
         }
     }
