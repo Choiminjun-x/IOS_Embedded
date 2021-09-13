@@ -29,9 +29,12 @@ class LoginView: UIView {
     //MARK: - Properties
     private let logoImageView: UIImageView = .init()
     private let textLabel: UILabel = .init()
+    private let forgotPwdLabel: UILabel = .init()
+    
     private let idTextField: UITextField = .init()
     private let passwdTextField: UITextField = .init()
     private let loginBtn: UIButton = .init()
+    private let regiButton: UIButton = .init()
     
     private let testBtn: UIButton = .init()
     
@@ -45,7 +48,7 @@ class LoginView: UIView {
     var userModel = UserModel()
     var userInfo = UserInfo.shared
 
-    
+    //MARK: - LifeCycle
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -85,10 +88,10 @@ class LoginView: UIView {
         
         self.idTextField.do {
             self.addSubview($0)
-            $0.placeholder = "id"
+            $0.placeholder = "아이디"
             $0.textColor = .black
-            $0.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0)
-            $0.layer.borderWidth = 3
+            $0.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+            $0.layer.borderWidth = 1
             $0.layer.cornerRadius = 15
             $0.autocapitalizationType = .none
             $0.layer.borderColor = .init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
@@ -103,10 +106,10 @@ class LoginView: UIView {
         
         self.passwdTextField.do {
             self.addSubview($0)
-            $0.placeholder = "password"
+            $0.placeholder = "비밀번호"
             $0.textColor = .black
-            $0.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0)
-            $0.layer.borderWidth = 3
+            $0.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
+            $0.layer.borderWidth = 1
             $0.layer.cornerRadius = 15
             $0.autocapitalizationType = .none
             $0.layer.borderColor = .init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
@@ -119,15 +122,28 @@ class LoginView: UIView {
             $0.addTarget(self, action: #selector(didEndOnExit), for: UIControl.Event.editingDidEndOnExit)
         }
         
+        self.forgotPwdLabel.do {
+            self.addSubview($0)
+            $0.snp.makeConstraints {
+                $0.centerX.equalToSuperview()
+                $0.width.equalToSuperview().offset(-100)
+                $0.height.equalTo(20)
+                $0.top.equalTo(self.passwdTextField.snp.bottom).offset(25)
+            }
+            $0.text = "비밀번호를 잊으셨습니까?"
+            $0.textAlignment = .center
+            $0.textColor = .white
+        }
+        
         self.loginBtn.do {
             self.addSubview($0)
-            $0.setTitle("Sign in", for: .normal)
+            $0.setTitle("로그인", for: .normal)
             $0.setTitleColor(.black, for: .normal)
             $0.backgroundColor = .white
             $0.layer.cornerRadius = 15
             $0.snp.makeConstraints{
-                $0.top.equalTo(passwdTextField.snp.bottom).offset(25)
-                $0.height.equalTo(40)
+                $0.top.equalTo(self.forgotPwdLabel.snp.bottom).offset(25)
+                $0.height.equalTo(50)
                 $0.width.equalToSuperview().offset(-100)
                 $0.centerX.equalToSuperview()
             }
@@ -139,6 +155,20 @@ class LoginView: UIView {
             }.disposed(by: disposeBag) //메모리 해제
         }
         
+        self.regiButton.do {
+            self.addSubview($0)
+            $0.setTitle("회원가입", for: .normal)
+            $0.setTitleColor(.black, for: .normal)
+            $0.backgroundColor = .white
+            $0.layer.cornerRadius = 15
+            $0.snp.makeConstraints{
+                $0.top.equalTo(self.loginBtn.snp.bottom).offset(15)
+                $0.height.equalTo(50)
+                $0.width.equalToSuperview().offset(-100)
+                $0.centerX.equalToSuperview()
+            }
+        }
+        
         //****** 테스트 버튼임 ******
         self.testBtn.do {
             self.addSubview($0)
@@ -147,7 +177,7 @@ class LoginView: UIView {
             $0.setTitleColor(.black, for: .normal)
             $0.layer.cornerRadius = 15
             $0.snp.makeConstraints {
-                $0.top.equalTo(loginBtn.snp.bottom).offset(15)
+                $0.top.equalTo(regiButton.snp.bottom).offset(30)
                 $0.height.equalTo(40)
                 $0.width.equalToSuperview().offset(-100)
                 $0.centerX.equalToSuperview()
@@ -192,7 +222,6 @@ class LoginView: UIView {
     
     //로그인 버튼 클릭 시
     @objc func didTapLoginButton(_ sender: UIButton) {
-        
         // 옵셔널 바인딩 & 예외 처리 : Textfield가 빈문자열이 아니고, nil이 아닐 때
         guard let email = idTextField.text, !email.isEmpty else { return }
         guard let password = passwdTextField.text, !password.isEmpty else { return }
@@ -217,7 +246,6 @@ class LoginView: UIView {
         } // 비밀번호 형식 오류
         
         if userModel.isValidEmail(id: email) && userModel.isValidPassword(pwd: password) {
-            
             let loginSuccess: Bool = loginCheck(id: email, pwd: password)
             if loginSuccess {
                 print("로그인 성공")
@@ -226,7 +254,6 @@ class LoginView: UIView {
                 if let removable = self.viewWithTag(102) {
                     removable.removeFromSuperview()
                 }
-                
             }
             else {
                 print("로그인 실패")
@@ -234,7 +261,6 @@ class LoginView: UIView {
                 loginFailLabel.text = "아이디나 비밀번호가 다릅니다."
                 loginFailLabel.textColor = UIColor.red
                 loginFailLabel.tag = 102
-                
                 self.addSubview(loginFailLabel)
             }
         }
