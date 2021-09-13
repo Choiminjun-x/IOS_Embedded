@@ -22,9 +22,6 @@ class CommunityViewController: UIViewController {
     
     var socket = SocketIOManager.shared
 
-
-    //검색 결과 전체 배열
-
     internal var searchResults: [Result]? = []
     
     internal var carAccidentResults: [Result]? = []
@@ -48,6 +45,7 @@ class CommunityViewController: UIViewController {
         self.makeCellModels()
         self.pageChange()
         self.searchBarConf()
+        
     }
     
     //MARK: - Socket 통신
@@ -82,6 +80,7 @@ class CommunityViewController: UIViewController {
                 }
             }
         }
+        print(mirrorResults!.count)
     }
     
     //MARK: - Make Cell
