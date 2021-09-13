@@ -45,6 +45,7 @@ class CommunityViewController: UIViewController {
         self.makeCellModels()
         self.pageChange()
         self.searchBarConf()
+        
     }
     
     //MARK: - Socket 통신
@@ -79,6 +80,7 @@ class CommunityViewController: UIViewController {
                 }
             }
         }
+        print(mirrorResults!.count)
     }
     
     //MARK: - Make Cell
@@ -109,17 +111,7 @@ class CommunityViewController: UIViewController {
     
     //MARK: - searchConf
     func searchBarConf(){
-<<<<<<< HEAD
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = true
-        searchController.searchBar.placeholder = "검색"
-        searchController.searchBar.autocapitalizationType = .none
-        definesPresentationContext = true
-        
-        self.navigationItem.searchController = searchController
-        self.navigationItem.title = "커뮤니티"
-        self.navigationItem.hidesSearchBarWhenScrolling = true
-=======
+
         self.navigationItem.searchController = searchController
         self.navigationItem.title = "커뮤니티"
         self.navigationItem.hidesSearchBarWhenScrolling = true
@@ -136,7 +128,7 @@ class CommunityViewController: UIViewController {
         //ScopeBar
         searchController.searchBar.scopeButtonTitles = [ "자동차 사고", "범퍼", "와이퍼", "미러" ]
         searchController.searchBar.showsScopeBar = true
->>>>>>> 802300014c2ca2f3d2eaf4dd4716d5cfc18e10b9
+
     }
     
     //MARK: - searchBar..
