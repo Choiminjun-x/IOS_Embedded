@@ -20,6 +20,7 @@ class CommunityView: UIView {
             self.CommunityListViewDelegate.cellTapEvent
         }
     }
+    
     //MARK: - LifeCycle 
     required init?(coder: NSCoder) {
         fatalError()
@@ -31,12 +32,11 @@ class CommunityView: UIView {
     }
     
     func setAppearance() {
+        self.backgroundColor = UIColor(displayP3Red: 235/255, green: 251/255, blue: 255/255, alpha: 1)
         
-        self.backgroundColor = .white
-        //self.backgroundColor = UIColor(displayP3Red: 235/255, green: 251/255, blue: 255/255, alpha: 1)
-
         self.communityListView.do {
             self.addSubview($0)
+            self.backgroundColor = UIColor(displayP3Red: 235/255, green: 251/255, blue: 255/255, alpha: 1)
             $0.snp.makeConstraints {
                 $0.width.top.equalToSuperview()
                 $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
@@ -62,6 +62,7 @@ fileprivate class CommunityListViewDelegate: NSObject, UITableViewDelegate, UITa
     let cellTapEvent: PublishRelay<Int> = .init()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return cellModels?.count ?? 0
     }
     
@@ -75,9 +76,8 @@ fileprivate class CommunityListViewDelegate: NSObject, UITableViewDelegate, UITa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         return cellTapEvent.accept(indexPath.row)
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 100 
     }
 }
 
