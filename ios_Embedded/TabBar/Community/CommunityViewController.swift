@@ -51,6 +51,7 @@ class CommunityViewController: UIViewController {
     //MARK: - Socket 통신
     func socketManager(_ socketMessage: String, _ message: String){
         socket.sendMessage(socketMessage: socketMessage, message: message)
+
         socket.socket.on(socketMessage) {jsonObject, ack in
             for i in jsonObject{
                 if let array = i as? NSMutableArray{
@@ -58,6 +59,7 @@ class CommunityViewController: UIViewController {
                         do{
                             let data = try JSONSerialization.data(withJSONObject: a, options: .prettyPrinted)
                             let r = try JSONDecoder().decode(Result.self, from: data)
+
                             //배열에 넣기
                             self.searchResults?.append(r)
                             if message == "자동차 사고" {

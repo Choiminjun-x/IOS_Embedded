@@ -48,7 +48,9 @@ class LoginView: UIView {
     var userModel = UserModel()
     var userInfo = UserInfo.shared
 
+
     //MARK: - LifeCycle
+
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -92,6 +94,7 @@ class LoginView: UIView {
             $0.textColor = .black
             $0.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
             $0.layer.borderWidth = 1
+
             $0.layer.cornerRadius = 15
             $0.autocapitalizationType = .none
             $0.layer.borderColor = .init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
@@ -110,6 +113,7 @@ class LoginView: UIView {
             $0.textColor = .black
             $0.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
             $0.layer.borderWidth = 1
+
             $0.layer.cornerRadius = 15
             $0.autocapitalizationType = .none
             $0.layer.borderColor = .init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)

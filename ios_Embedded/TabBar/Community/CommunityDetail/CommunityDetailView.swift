@@ -9,6 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
+
 class CommunityDetailView: UIView {
     
     //MARK: - Properties
@@ -100,7 +101,7 @@ class CommunityDetailView: UIView {
                 $0.height.equalTo(80)
                 $0.top.equalTo(80)
                 $0.leading.equalToSuperview().offset(10)
-                $0.trailing.equalToSuperview().offset(-10)
+
             }
             $0.axis = .horizontal
             $0.alignment = .fill
@@ -122,6 +123,7 @@ class CommunityDetailView: UIView {
             self.vstackView.addArrangedSubview($0)
             $0.numberOfLines = 0
             $0.font = .systemFont(ofSize: 15)
+
             
         }
         self.vstackView.setCustomSpacing(10, after: self.questionLabel)

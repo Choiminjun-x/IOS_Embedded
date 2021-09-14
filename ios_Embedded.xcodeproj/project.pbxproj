@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		25075A0A9380971273E7BC1C /* Pods_ios_Embedded.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D90F125B27D23AD08911A30F /* Pods_ios_Embedded.framework */; };
 		346414DF26DA90D500832E2F /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346414DE26DA90D500832E2F /* SocketIOManager.swift */; };
+		34E9678526F0746E00CD9834 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9678426F0746E00CD9834 /* MapViewController.swift */; };
+		34E9678726F0747D00CD9834 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E9678626F0747D00CD9834 /* MapView.swift */; };
 		B01613A426BE2FE500EAED73 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01613A326BE2FE500EAED73 /* LoadingView.swift */; };
 		B01613A626BE2FF700EAED73 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01613A526BE2FF700EAED73 /* LoadingViewController.swift */; };
 		B01613A826BE30AA00EAED73 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01613A726BE30AA00EAED73 /* MainView.swift */; };
@@ -35,6 +37,8 @@
 		0C10E510EED713E9780959EB /* Pods-ios_Embedded.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios_Embedded.release.xcconfig"; path = "Target Support Files/Pods-ios_Embedded/Pods-ios_Embedded.release.xcconfig"; sourceTree = "<group>"; };
 		1CA76C2FC6C5AA2E75A12FC8 /* Pods-ios_Embedded.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios_Embedded.debug.xcconfig"; path = "Target Support Files/Pods-ios_Embedded/Pods-ios_Embedded.debug.xcconfig"; sourceTree = "<group>"; };
 		346414DE26DA90D500832E2F /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
+		34E9678426F0746E00CD9834 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		34E9678626F0747D00CD9834 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		B01613A326BE2FE500EAED73 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B01613A526BE2FF700EAED73 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		B01613A726BE30AA00EAED73 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -72,6 +76,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		34E9678326F0745600CD9834 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				34E9678426F0746E00CD9834 /* MapViewController.swift */,
+				34E9678626F0747D00CD9834 /* MapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		957CB8E1600F6E0D153DDC12 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +144,7 @@
 		B052136626C557F100BC6EBE /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				34E9678326F0745600CD9834 /* Map */,
 				B029600026CD4D370019EAEA /* Community */,
 				B01613A226BE2FA700EAED73 /* Main */,
 				B052136726C5581F00BC6EBE /* TabBarController.swift */,
@@ -308,9 +322,11 @@
 				B01C5A9926B63DC60004C040 /* Sets.swift in Sources */,
 				B01613A826BE30AA00EAED73 /* MainView.swift in Sources */,
 				B052136826C5581F00BC6EBE /* TabBarController.swift in Sources */,
+				34E9678526F0746E00CD9834 /* MapViewController.swift in Sources */,
 				B0A8D14026A45DA800471634 /* LoginViewController.swift in Sources */,
 				B0DB06FA26DFC76000665303 /* CommunityDetailView.swift in Sources */,
 				B084906126BC2212009BA5A6 /* MainModel.swift in Sources */,
+				34E9678726F0747D00CD9834 /* MapView.swift in Sources */,
 				B01613A626BE2FF700EAED73 /* LoadingViewController.swift in Sources */,
 				B029600426CD4D5F0019EAEA /* CommunityViewController.swift in Sources */,
 				B029600226CD4D530019EAEA /* CommunityView.swift in Sources */,

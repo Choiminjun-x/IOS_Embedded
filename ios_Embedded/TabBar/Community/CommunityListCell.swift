@@ -72,11 +72,13 @@ class CommunityListCell: UITableViewCell {
         
         self.answerLabel.do {
             vstackView.addArrangedSubview($0)
+
             $0.snp.makeConstraints {
                 $0.leading.equalToSuperview().offset(10)
             }
             $0.textColor = .gray
             $0.numberOfLines = 3
+
             $0.font = .systemFont(ofSize: 13)
         }
     }
@@ -84,5 +86,6 @@ class CommunityListCell: UITableViewCell {
     func displayCellModel(_ model: CommnuityListCellModel) {
         self.titleLabel.text = model.title
         self.answerLabel.text = model.question
+
     }
 }
