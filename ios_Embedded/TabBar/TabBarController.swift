@@ -17,11 +17,18 @@ class TabBarController: UITabBarController {
         let vc2 = CommunityViewController()
         let vc3 = MapViewController()
         
+<<<<<<< HEAD
         vc2.socketManager("community_init1", "자동차 사고")
         vc2.socketManager("community_init2", "범퍼")
         vc2.socketManager("community_init3", "와이퍼")
         vc2.socketManager("community_init4", "미러")
 
+=======
+        vc2.socketManager("community_init", "자동차 사고")
+        vc2.socketManager("community_init", "범퍼")
+        vc2.socketManager("community_init", "와이퍼")
+        vc2.socketManager("community_init", "미러")
+>>>>>>> 0a2724b074619d5df31bd063e54b617cd140d1b7
         
         vc1.title = "메인"
         vc1.tabBarItem.image = UIImage(systemName: "house")

@@ -45,6 +45,7 @@ class CommunityListCell: UITableViewCell {
                 $0.centerX.equalToSuperview()
             }
             $0.axis = .vertical
+<<<<<<< HEAD
             $0.alignment = .fill
             $0.distribution = .fillEqually
         }
@@ -52,6 +53,8 @@ class CommunityListCell: UITableViewCell {
         self.vstackView2.do {
             self.vstackView.addArrangedSubview($0)
             $0.axis = .horizontal
+=======
+>>>>>>> 0a2724b074619d5df31bd063e54b617cd140d1b7
             $0.alignment = .fill
             $0.distribution = .fill
         }
@@ -63,7 +66,11 @@ class CommunityListCell: UITableViewCell {
         self.titleLabel.do {
             vstackView2.addArrangedSubview($0)
             $0.snp.makeConstraints {
+<<<<<<< HEAD
                 $0.leading.equalToSuperview().offset(15)
+=======
+                $0.leading.equalToSuperview().offset(20)
+>>>>>>> 0a2724b074619d5df31bd063e54b617cd140d1b7
             }
             $0.numberOfLines = 0
             $0.textColor = .black
@@ -72,17 +79,26 @@ class CommunityListCell: UITableViewCell {
         
         self.answerLabel.do {
             vstackView.addArrangedSubview($0)
+<<<<<<< HEAD
             $0.snp.makeConstraints {
                 $0.leading.equalToSuperview().offset(10)
             }
             $0.textColor = .gray
             $0.numberOfLines = 3
+=======
+            $0.textColor = .gray
+            $0.numberOfLines = 0
+>>>>>>> 0a2724b074619d5df31bd063e54b617cd140d1b7
             $0.font = .systemFont(ofSize: 13)
         }
     }
     
     func displayCellModel(_ model: CommnuityListCellModel) {
         self.titleLabel.text = model.title
+<<<<<<< HEAD
         self.answerLabel.text = model.question
+=======
+        self.answerLabel.text = model.answer![0]
+>>>>>>> 0a2724b074619d5df31bd063e54b617cd140d1b7
     }
 }

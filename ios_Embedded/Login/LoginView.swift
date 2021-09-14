@@ -48,7 +48,11 @@ class LoginView: UIView {
     var userModel = UserModel()
     var userInfo = UserInfo.shared
 
+<<<<<<< HEAD
     //MARK: - LifeCycle
+=======
+    
+>>>>>>> 0a2724b074619d5df31bd063e54b617cd140d1b7
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -90,8 +94,13 @@ class LoginView: UIView {
             self.addSubview($0)
             $0.placeholder = "아이디"
             $0.textColor = .black
+<<<<<<< HEAD
             $0.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
             $0.layer.borderWidth = 1
+=======
+            $0.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0)
+            $0.layer.borderWidth = 3
+>>>>>>> 0a2724b074619d5df31bd063e54b617cd140d1b7
             $0.layer.cornerRadius = 15
             $0.autocapitalizationType = .none
             $0.layer.borderColor = .init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
@@ -108,8 +117,13 @@ class LoginView: UIView {
             self.addSubview($0)
             $0.placeholder = "비밀번호"
             $0.textColor = .black
+<<<<<<< HEAD
             $0.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
             $0.layer.borderWidth = 1
+=======
+            $0.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0)
+            $0.layer.borderWidth = 3
+>>>>>>> 0a2724b074619d5df31bd063e54b617cd140d1b7
             $0.layer.cornerRadius = 15
             $0.autocapitalizationType = .none
             $0.layer.borderColor = .init(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
