@@ -46,19 +46,12 @@ class CommunityViewController: UIViewController {
         self.pageChange()
         self.searchBarConf()
         
-<<<<<<< HEAD
-        
-=======
->>>>>>> 0a2724b074619d5df31bd063e54b617cd140d1b7
     }
     
     //MARK: - Socket 통신
     func socketManager(_ socketMessage: String, _ message: String){
         socket.sendMessage(socketMessage: socketMessage, message: message)
-<<<<<<< HEAD
-        
-=======
->>>>>>> 0a2724b074619d5df31bd063e54b617cd140d1b7
+
         socket.socket.on(socketMessage) {jsonObject, ack in
             for i in jsonObject{
                 if let array = i as? NSMutableArray{
@@ -66,10 +59,7 @@ class CommunityViewController: UIViewController {
                         do{
                             let data = try JSONSerialization.data(withJSONObject: a, options: .prettyPrinted)
                             let r = try JSONDecoder().decode(Result.self, from: data)
-<<<<<<< HEAD
 
-=======
->>>>>>> 0a2724b074619d5df31bd063e54b617cd140d1b7
                             //배열에 넣기
                             self.searchResults?.append(r)
                             if message == "자동차 사고" {
@@ -99,15 +89,9 @@ class CommunityViewController: UIViewController {
     func makeCellModels() {
         let cellModels: [CommnuityListCellModel] = searchResults?.compactMap {
             guard let title = $0.title else { return nil }
-<<<<<<< HEAD
             guard let question = $0.question else { return nil }
             return .init(title: title,
                          question: question)
-=======
-            guard let answer = $0.answer else { return nil }
-            return .init(title: title,
-                         answer: answer)
->>>>>>> 0a2724b074619d5df31bd063e54b617cd140d1b7
         } ?? []
         self.displayCommunityList(cellModels: cellModels)
     }
