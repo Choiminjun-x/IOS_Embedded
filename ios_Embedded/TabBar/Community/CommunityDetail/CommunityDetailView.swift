@@ -178,7 +178,7 @@ class CommunityDetailView: UIView {
     func displayCellModel(_ model: [Result], index: Int) {
         self.titleLabel.text = "\(model[index].title ?? "") "
         self.questionLabel.text = "\(model[index].question ?? "")"
-        self.answerLabel.text = "\(model[index].answer ?? [])"
+        self.answerLabel.text = "\(model[index].answer![0])"
         self.pageLabel.text = "-"+String(index+1)+"번째 글-"
     }
 }

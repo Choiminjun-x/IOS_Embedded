@@ -87,9 +87,9 @@ class CommunityViewController: UIViewController {
     func makeCellModels() {
         let cellModels: [CommnuityListCellModel] = searchResults?.compactMap {
             guard let title = $0.title else { return nil }
-            guard let answer = $0.answer else { return nil }
+            guard let question = $0.question else { return nil }
             return .init(title: title,
-                         answer: answer)
+                         question: question)
         } ?? []
         self.displayCommunityList(cellModels: cellModels)
     }

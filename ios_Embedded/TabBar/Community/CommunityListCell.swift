@@ -83,6 +83,6 @@ class CommunityListCell: UITableViewCell {
     
     func displayCellModel(_ model: CommnuityListCellModel) {
         self.titleLabel.text = model.title
-        self.answerLabel.text = model.answer![0]
+        self.answerLabel.text = model.question
     }
 }
