@@ -21,19 +21,19 @@ class CommunityViewController: UIViewController {
     private let pageView: CommunityView = .init()
     
     var socket = SocketIOManager.shared
-
-    internal var searchResults: [Result]? = []
     
-    internal var carAccidentResults: [Result]? = []
-    internal var bumperResults: [Result]? = []
-    internal var wiperResults: [Result]? = []
-    internal var mirrorResults: [Result]? = []
+    internal var searchResults: [Result] = []
+    internal var carAccidentResults: [Result] = []
+    internal var bumperResults: [Result] = []
+    internal var wiperResults: [Result] = []
+    internal var mirrorResults: [Result] = []
 
     let searchController = UISearchController(searchResultsController: nil)
     
     private let disposeBag: DisposeBag = .init()
     
-    private var filteredResults = [Result]()
+    internal var filteredResults = [Result]()
+    var searchPoint = 0
     
     //MARK: - LifeCycle
     override func loadView() {
@@ -64,20 +64,18 @@ class CommunityViewController: UIViewController {
                         do{
                             let data = try JSONSerialization.data(withJSONObject: a, options: .prettyPrinted)
                             let r = try JSONDecoder().decode(Result.self, from: data)
-
                             //배열에 넣기
-                            self.searchResults?.append(r)
                             if message == "자동차 사고" {
-                                self.carAccidentResults?.append(r)
+                                self.carAccidentResults.append(r)
                             }
                             else if message == "범퍼" {
-                                self.bumperResults?.append(r)
+                                self.bumperResults.append(r)
                             }
                             else if message == "와이퍼" {
-                                self.wiperResults?.append(r)
+                                self.wiperResults.append(r)
                             }
                             else if message == "미러" {
-                                self.mirrorResults?.append(r)
+                                self.mirrorResults.append(r)
                             }
                             
                         }catch{
@@ -87,17 +85,27 @@ class CommunityViewController: UIViewController {
                 }
             }
         }
-        print(mirrorResults!.count)
     }
     
     //MARK: - Make Cell
     func makeCellModels() {
-        let cellModels: [CommnuityListCellModel] = searchResults?.compactMap {
+        searchResults = self.carAccidentResults + self.bumperResults + self.wiperResults + self.mirrorResults
+        let cellModels: [CommnuityListCellModel] = searchResults.compactMap {
             guard let title = $0.title else { return nil }
             guard let question = $0.question else { return nil }
             return .init(title: title,
                          question: question)
-        } ?? []
+        }
+        self.displayCommunityList(cellModels: cellModels)
+    }
+    
+    func makeFilterCellModels() {
+        let cellModels: [CommnuityListCellModel] = filteredResults.compactMap {
+            guard let title = $0.title else { return nil }
+            guard let question = $0.question else { return nil }
+            return .init(title: title,
+                         question: question)
+        }
         self.displayCommunityList(cellModels: cellModels)
     }
     
@@ -112,7 +120,11 @@ class CommunityViewController: UIViewController {
                 //배열 정보를 넘겨야 함
               let page = CommunityDetailViewController()
                 self.navigationController?.pushViewController(page, animated: true)
-                page.requestCommunityDetail(searchResults: self.searchResults!, index: index)
+                if self.filteredResults.isEmpty { //검색어 필터 적용된 리스트 비어있는지 확인
+                    page.requestCommunityDetail(searchResults: self.searchResults, index: index)
+                }else {
+                page.requestCommunityDetail(searchResults: self.filteredResults, index: index)
+                }
             }).disposed(by: disposeBag)
     }
     
@@ -122,32 +134,37 @@ class CommunityViewController: UIViewController {
         self.navigationItem.searchController = searchController
         self.navigationItem.title = "커뮤니티"
         self.navigationItem.hidesSearchBarWhenScrolling = true
-        
-        searchController.searchResultsUpdater = self
+    
         searchController.obscuresBackgroundDuringPresentation = true
         searchController.searchBar.placeholder = "검색"
+
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        searchController.searchBar.delegate = self
+
         
         //ScopeBar
         searchController.searchBar.scopeButtonTitles = [ "자동차 사고", "범퍼", "와이퍼", "미러" ]
         searchController.searchBar.showsScopeBar = true
-
     }
     
-    //MARK: - searchBar..
     func searchBarIsEmpty() -> Bool {
       // Returns true if the text is empty or nil
       return searchController.searchBar.text?.isEmpty ?? true
     }
-
-    func isFiltering() -> Bool {
-      return searchController.isActive && !searchBarIsEmpty()
+      
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        filteredResults = searchResults.filter({( result : Result) -> Bool in
+            return result.title!.lowercased().contains(searchText.lowercased())
+      })
+        self.makeFilterCellModels()
     }
 }
 
 // MARK: - UISearchResultsUpdating Delegate
-extension CommunityViewController: UISearchResultsUpdating{
-
-    func updateSearchResults(for searchController: UISearchController) {
-        
+extension CommunityViewController: UISearchBarDelegate{
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchPoint += 1
+        self.filterContentForSearchText(searchController.searchBar.text!)
     }
 }

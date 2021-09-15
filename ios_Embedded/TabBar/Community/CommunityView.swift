@@ -13,7 +13,7 @@ import RxSwift
 class CommunityView: UIView {
     
     //MARK: - Properties
-    private let communityListView: UITableView = .init(frame: .zero)
+    internal let communityListView: UITableView = .init(frame: .zero)
     private let CommunityListViewDelegate: CommunityListViewDelegate = .init()
     internal var communityCellTapEvent: PublishRelay<Int> {
         get {
