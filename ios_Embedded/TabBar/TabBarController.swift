@@ -17,6 +17,7 @@ class TabBarController: UITabBarController {
         let vc2 = CommunityViewController()
         let vc3 = MapViewController()
         
+        //vc3.displayLocation()
 
         vc2.socketManager("community_init1", "자동차 사고")
         vc2.socketManager("community_init2", "범퍼")
