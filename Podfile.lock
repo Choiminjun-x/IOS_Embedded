@@ -1,5 +1,12 @@
 PODS:
   - Alamofire (5.4.3)
+  - GoogleMaps (4.0.0):
+    - GoogleMaps/Maps (= 4.0.0)
+  - GoogleMaps/Base (4.0.0)
+  - GoogleMaps/Maps (4.0.0):
+    - GoogleMaps/Base
+  - GooglePlaces (4.0.0):
+    - GoogleMaps/Base (= 4.0.0)
   - RxCocoa (6.2.0):
     - RxRelay (= 6.2.0)
     - RxSwift (= 6.2.0)
@@ -16,6 +23,8 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - GoogleMaps (= 4.0.0)
+  - GooglePlaces (= 4.0.0)
   - RxCocoa
   - RxSwift
   - SDWebImage
@@ -25,6 +34,8 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - GoogleMaps
+    - GooglePlaces
     - RxCocoa
     - RxRelay
     - RxSwift
@@ -35,6 +46,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  GoogleMaps: b7f7fc569a9b354a3af0d9729dbec40957b7d41e
+  GooglePlaces: ca8d4aba09ba79e0a829cf1dca03a41de6a09016
   RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
   RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
@@ -43,6 +56,6 @@ SPEC CHECKSUMS:
   Socket.IO-Client-Swift: c116d6dc9fd6be9c259bacfe143f8725bce7d79e
   Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
 
-PODFILE CHECKSUM: 885021168378179c2fc7be9067ab8904e719839a
+PODFILE CHECKSUM: cbc34a721635953e76de2e5f5db883e41d514fcb
 
-COCOAPODS: 1.10.2
+COCOAPODS: 1.10.1
