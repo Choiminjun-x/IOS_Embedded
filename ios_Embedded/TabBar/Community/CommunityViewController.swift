@@ -46,6 +46,11 @@ class CommunityViewController: UIViewController {
         self.pageChange()
         self.searchBarConf()
         
+        print(searchResults?.count)
+        print(carAccidentResults?.count)
+        print(bumperResults?.count)
+        print(wiperResults?.count)
+        print(mirrorResults?.count)
     }
     
     //MARK: - Socket 통신
@@ -132,8 +137,10 @@ class CommunityViewController: UIViewController {
     
         searchController.obscuresBackgroundDuringPresentation = true
         searchController.searchBar.placeholder = "검색"
+
         self.navigationController?.navigationBar.prefersLargeTitles = true
         searchController.searchBar.delegate = self
+
         
         //ScopeBar
         searchController.searchBar.scopeButtonTitles = [ "자동차 사고", "범퍼", "와이퍼", "미러" ]
