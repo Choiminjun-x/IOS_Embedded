@@ -10,6 +10,8 @@ target 'ios_Embedded' do
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'Socket.IO-Client-Swift'
+  pod 'GoogleMaps', '4.0.0'
+  pod 'GooglePlaces', '4.0.0'
   # Pods for ios_Embedded
 
 end

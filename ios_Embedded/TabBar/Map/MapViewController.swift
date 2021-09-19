@@ -15,8 +15,10 @@ class MapViewController: UIViewController{
     
     //MARK: - Properties
     private let pageView: MapView = .init()
-    private let refreshButton: UIBarButtonItem = .init()
-
+    private let searchVC: UISearchController = .init()
+    
+    let disposeBag: DisposeBag = .init()
+    
     //MARK: - LifeCycle
     override func loadView() {
         self.view = pageView.self
@@ -24,7 +26,15 @@ class MapViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.GMSAutoCompleteConf()
+        self.viewEvent()
+        self.navigationController?.navigationBar.isHidden = true
+        
+    }
+    
+    func viewEvent(){
+        self.pageView.searchBtnClickEvent.subscribe(onNext: {
+            self.GMSAutoCompleteConf()
+        }).disposed(by: self.disposeBag)
     }
     
     func GMSAutoCompleteConf(){

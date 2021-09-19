@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import SocketIO
 
-class UserInfo {
+class UserInfo: Codable{
     static let shared = UserInfo()
     
     var email: String?
@@ -47,7 +47,7 @@ class LoginView: UIView {
     
     var userModel = UserModel()
     var userInfo = UserInfo.shared
-
+    var socket = SocketIOManager.shared
 
     //MARK: - LifeCycle
 
@@ -255,6 +255,9 @@ class LoginView: UIView {
                 print("로그인 성공")
                 //로그인 체크 변수 변경 -> 로그인 성공 시
                 self.loginCheck = 1
+                let user = userInfo.email! + "/" + userInfo.carRealName! + "/" + userInfo.carNumber!
+                socket.socket.emit("loginSuccess", user)
+
                 if let removable = self.viewWithTag(102) {
                     removable.removeFromSuperview()
                 }
