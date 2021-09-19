@@ -24,17 +24,8 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationConf()
         self.navigationController?.navigationBar.isHidden = true
         self.pageEvent()
-    }
-    
-    //MARK: - navigation Configure
-    private func navigationConf() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
     }
     
     //MARK: - pageEvent

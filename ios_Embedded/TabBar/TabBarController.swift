@@ -12,19 +12,35 @@ class TabBarController: UITabBarController {
     //MARK: - LifeCycle 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBar.barTintColor = UIColor(displayP3Red: 235/255, green: 251/255, blue: 255/255, alpha: 1)
         
         let vc1 = MainViewController()
         let vc2 = CommunityViewController()
+<<<<<<< HEAD
+        let vc3 = MapViewController() 
+=======
+        let vc3 = MapViewController()
+        
+        //vc3.displayLocation()
+>>>>>>> 5a0e9bdb68477e0ebbcf71c5a7a4054d735f27d6
+
+        vc2.socketManager("community_init1", "자동차 사고")
+        vc2.socketManager("community_init2", "범퍼")
+        vc2.socketManager("community_init3", "와이퍼")
+        vc2.socketManager("community_init4", "미러")
         
         vc1.title = "메인"
         vc1.tabBarItem.image = UIImage(systemName: "house")
         vc2.title = "커뮤니티"
         vc2.tabBarItem.image = UIImage(systemName: "message")
+        vc3.title = "지도"
+        vc3.tabBarItem.image = UIImage(systemName: "location")
         
         let nav1 = UINavigationController(rootViewController: vc1)
         let nav2 = UINavigationController(rootViewController: vc2)
+        let nav3 = UINavigationController(rootViewController: vc3)
         
-        setViewControllers([nav1, nav2], animated: true)
+        setViewControllers([nav1, nav2, nav3], animated: true)
         
     }
 }

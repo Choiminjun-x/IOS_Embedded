@@ -7,12 +7,19 @@
 
 import UIKit
 import SnapKit
+import RxCocoa
+import RxSwift
 
 class CommunityView: UIView {
     
     //MARK: - Properties
-    private let communityListView: UITableView = .init(frame: .zero)
+    internal let communityListView: UITableView = .init(frame: .zero)
     private let CommunityListViewDelegate: CommunityListViewDelegate = .init()
+    internal var communityCellTapEvent: PublishRelay<Int> {
+        get {
+            self.CommunityListViewDelegate.cellTapEvent
+        }
+    }
     
     //MARK: - LifeCycle 
     required init?(coder: NSCoder) {
@@ -25,15 +32,18 @@ class CommunityView: UIView {
     }
     
     func setAppearance() {
+        self.backgroundColor = UIColor(displayP3Red: 235/255, green: 251/255, blue: 255/255, alpha: 1)
         
-        self.backgroundColor = .white
-        //self.backgroundColor = UIColor(displayP3Red: 220/255, green: 222/255, blue: 222/255, alpha: 1)
-
         self.communityListView.do {
             self.addSubview($0)
+<<<<<<< HEAD
+            $0.backgroundColor = UIColor(displayP3Red: 235/255, green: 251/255, blue: 255/255, alpha: 1)
+=======
+            self.backgroundColor = UIColor(displayP3Red: 235/255, green: 251/255, blue: 255/255, alpha: 1)
+>>>>>>> 5a0e9bdb68477e0ebbcf71c5a7a4054d735f27d6
             $0.snp.makeConstraints {
-                $0.width.height.equalToSuperview()
-                $0.top.equalToSuperview().offset(200)
+                $0.width.top.equalToSuperview()
+                $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
             }
             $0.delegate = self.CommunityListViewDelegate
             $0.dataSource = self.CommunityListViewDelegate
@@ -53,8 +63,10 @@ class CommunityView: UIView {
 fileprivate class CommunityListViewDelegate: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     var cellModels: [CommnuityListCellModel]?
+    let cellTapEvent: PublishRelay<Int> = .init()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return cellModels?.count ?? 0
     }
     
@@ -65,9 +77,18 @@ fileprivate class CommunityListViewDelegate: NSObject, UITableViewDelegate, UITa
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        return cellTapEvent.accept(indexPath.row)
     }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+<<<<<<< HEAD
+        return 130
+=======
+        return 100 
+>>>>>>> 5a0e9bdb68477e0ebbcf71c5a7a4054d735f27d6
+    }
+
 }
 
 

@@ -45,7 +45,7 @@ class MainView: UIView {
     internal let carInfoBtnEvent: PublishRelay<Void> = .init()
     
     private let carInfoHstackView2: UIStackView = .init()
-    private let carImageView: UIButton = .init()
+    private let carImageView: UIImageView = .init()
     private let carinfoVstackView2: UIStackView = .init()
     private let carNameLabel: UILabel = .init()
     private let carRealNameLabel: UILabel = .init()
@@ -82,7 +82,7 @@ class MainView: UIView {
     
     //MARK: -   View Method
     private func setAppearance() {
-        self.backgroundColor = UIColor(displayP3Red: 220/255, green: 222/255, blue: 222/255, alpha: 1)
+        self.backgroundColor = UIColor(displayP3Red: 235/255, green: 251/255, blue: 255/255, alpha: 1)
         //MARK: - 전체 ScrollView
         self.vscrollView.do {
             self.addSubview($0)
@@ -123,7 +123,6 @@ class MainView: UIView {
         //MARK: - Info
         self.infoHstackView.do {
             vstackView.addArrangedSubview($0)
-            self.backgroundColor = UIColor(displayP3Red: 235/255, green: 251/255, blue: 255/255, alpha: 1)
             $0.layer.cornerRadius = 13
             $0.snp.makeConstraints {
                 $0.height.equalTo(60)
@@ -264,10 +263,10 @@ class MainView: UIView {
         self.carImageView.do {
             carInfoHstackView2.addArrangedSubview($0)
             $0.snp.makeConstraints {
-                $0.width.equalTo(50)
+                $0.width.height.equalTo(35)
                 $0.leading.equalToSuperview().offset(20)
             }
-            $0.setImage(UIImage(named: "carDefault"), for: .normal)
+            $0.image = UIImage(named: "car2")
         }
         carInfoHstackView2.setCustomSpacing(10, after: carImageView)
         self.carinfoVstackView2.do {
@@ -297,6 +296,7 @@ class MainView: UIView {
         self.adScrollView.do {
             $0.backgroundColor = UIColor(displayP3Red: 235/255, green: 251/255, blue: 255/255, alpha: 1)
             vstackView.addArrangedSubview($0)
+            $0.layer.shadowOpacity = 0.1
             $0.layer.cornerRadius = 13
             self.settingScroll(.able)
             $0.snp.makeConstraints {
@@ -346,7 +346,7 @@ class MainView: UIView {
                 $0.width.equalTo(self.adImageView1.snp.height).multipliedBy(0.666)
                 $0.height.equalToSuperview()
             }
-            $0.image = UIImage(named: "sample0")
+            $0.image = UIImage(named: "AD1")
         }
         self.adImageView2.do {
             adStackView.addArrangedSubview($0)
@@ -354,7 +354,7 @@ class MainView: UIView {
                 $0.width.equalTo(self.adImageView2.snp.height).multipliedBy(0.666)
                 $0.height.equalToSuperview()
             }
-            $0.image = UIImage(named: "sample1")
+            $0.image = UIImage(named: "AD2")
         }
         self.adImageView3.do {
             adStackView.addArrangedSubview($0)
@@ -362,7 +362,7 @@ class MainView: UIView {
                 $0.width.equalTo(self.adImageView3.snp.height).multipliedBy(0.666)
                 $0.height.equalToSuperview()
             }
-            $0.image = UIImage(named: "sample2")
+            $0.image = UIImage(named: "AD3")
         }
     }
 }

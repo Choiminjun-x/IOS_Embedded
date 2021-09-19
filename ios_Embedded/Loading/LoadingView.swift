@@ -34,7 +34,7 @@ class LoadingView: UIView {
                 $0.width.equalTo(self.logoImageView.snp.height).multipliedBy(1.968)
                 $0.height.equalTo(90)
             }
-            $0.image = UIImage(named: "MainLogoImage")
+            $0.image = UIImage(named: "mainLogoImage")
         }
     }
 }

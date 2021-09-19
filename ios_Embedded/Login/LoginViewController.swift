@@ -25,14 +25,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationConf()
-        self.pageEvent()
-        
-    }
-    
-    private func navigationConf() {
-        self.navigationController?.navigationBar.isHidden = true
+        self.viewEvent()
     }
     
     func requestNextPage(){
@@ -41,11 +34,23 @@ class LoginViewController: UIViewController {
         self.present(tabPage, animated: true, completion: nil)
     }
     
-    func pageEvent() {
+    func makeFailAlert() {
+        let alert = UIAlertController(title: "로그인 실패", message: "이메일 혹은 비밀번호를 확인해주세요", preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in }
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func viewEvent() {
         self.pageView.loginBtnClickEvent
             .subscribe(onNext: {
                 self.requestNextPage()
             }).disposed(by: self.disposeBag)
+        
+        self.pageView.loginFailEvent
+            .subscribe(onNext: {
+                self.makeFailAlert()
+            }).disposed(by: disposeBag)
     }
     
     //아무 곳이나 화면 터치 시 키보드 내리기 
