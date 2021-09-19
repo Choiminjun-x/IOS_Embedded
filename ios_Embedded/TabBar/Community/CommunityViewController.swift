@@ -46,11 +46,6 @@ class CommunityViewController: UIViewController {
         self.pageChange()
         self.searchBarConf()
         
-        print(searchResults?.count)
-        print(carAccidentResults?.count)
-        print(bumperResults?.count)
-        print(wiperResults?.count)
-        print(mirrorResults?.count)
     }
     
     //MARK: - Socket 통신

@@ -12,11 +12,13 @@ import GooglePlaces
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var socket = SocketIOManager.shared
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         GMSServices.provideAPIKey("AIzaSyAzUJW4sz8fVm1soywDJ0VXYEpPQRU0Ubo")
         GMSPlacesClient.provideAPIKey("AIzaSyAzUJW4sz8fVm1soywDJ0VXYEpPQRU0Ubo")
+        UNUserNotificationCenter.current().delegate = self
         return true
     }
 
@@ -34,6 +36,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate{
+    //알림 배너 띄워주기
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
+    
+    //사용자가 알림을 눌렀을 때
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+
+        MainViewController().makeAccidentAlert()
+        
+        completionHandler()
+    }
+}

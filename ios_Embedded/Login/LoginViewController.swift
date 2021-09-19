@@ -28,10 +28,6 @@ class LoginViewController: UIViewController {
         self.viewEvent()
     }
     
-    private func navigationConf() {
-        self.navigationController?.navigationBar.isHidden = true
-    }
-    
     func requestNextPage(){
         let tabPage = TabBarController()
         tabPage.modalPresentationStyle = .fullScreen

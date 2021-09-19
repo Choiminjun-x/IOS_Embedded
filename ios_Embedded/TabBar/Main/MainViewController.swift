@@ -16,6 +16,8 @@ class MainViewController: UIViewController {
     
     private let disposeBag: DisposeBag = .init()
     
+    var socket = SocketIOManager.shared
+    
     //MARK: - LifeCycle
     override func loadView() {
         self.view = pageView.self
@@ -29,14 +31,6 @@ class MainViewController: UIViewController {
         self.pageEvent()
     }
     
-    //MARK: - navigation Configure
-    private func navigationConf() {
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
-    }
-    
     //MARK: - pageEvent
     func pageEvent() {
         self.pageView.carInfoBtnEvent
@@ -44,5 +38,17 @@ class MainViewController: UIViewController {
                 let page = UserInfoViewController()
                 self.navigationController?.pushViewController(page, animated: true)
             }).disposed(by: disposeBag)
+    }
+    
+    func makeAccidentAlert(){
+        let alert = UIAlertController(title: "사고가 발생했습니다", message: "경찰에 신고하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            //신고한다했을 때 버튼.
+            self.socket.socket.emit("report", "true")
+        }
+        let cancleAction = UIAlertAction(title: "cancle", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        alert.addAction(cancleAction)
+        present(alert, animated: true, completion: nil)
     }
 }
